@@ -33,11 +33,11 @@
 		FC02C22514985FB500605FD4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FC02C22614985FB500605FD4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FC02C22914985FB500605FD4 /* AreaPlan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AreaPlan.xcdatamodel; sourceTree = "<group>"; };
-		FC02C2301498601900605FD4 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasterViewController.h; path = ../MasterViewController.h; sourceTree = "<group>"; };
-		FC02C2311498601900605FD4 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewController.m; path = ../MasterViewController.m; sourceTree = "<group>"; };
-		FC02C2331498606C00605FD4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		FC02C2341498606C00605FD4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		FC02C2351498606C00605FD4 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		FC02C2301498601900605FD4 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		FC02C2311498601900605FD4 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		FC02C2331498606C00605FD4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = AreaPlan/MainViewController.h; sourceTree = "<group>"; };
+		FC02C2341498606C00605FD4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = AreaPlan/MainViewController.m; sourceTree = "<group>"; };
+		FC02C2351498606C00605FD4 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = AreaPlan/MainViewController.xib; sourceTree = "<group>"; };
 		FC02C2471498E82E00605FD4 /* ParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,6 +59,8 @@
 		FC02C20514985FB500605FD4 = {
 			isa = PBXGroup;
 			children = (
+				FC02C24A1498F4FF00605FD4 /* ViewControllers */,
+				FC02C2491498F4CC00605FD4 /* ViewNibs */,
 				FC02C2461498E7E200605FD4 /* Protocols */,
 				FC02C21C14985FB500605FD4 /* AreaPlan */,
 				FC02C21314985FB500605FD4 /* Frameworks */,
@@ -88,13 +90,8 @@
 		FC02C21C14985FB500605FD4 /* AreaPlan */ = {
 			isa = PBXGroup;
 			children = (
-				FC02C2301498601900605FD4 /* MasterViewController.h */,
-				FC02C2311498601900605FD4 /* MasterViewController.m */,
 				FC02C22514985FB500605FD4 /* AppDelegate.h */,
 				FC02C22614985FB500605FD4 /* AppDelegate.m */,
-				FC02C2331498606C00605FD4 /* MainViewController.h */,
-				FC02C2341498606C00605FD4 /* MainViewController.m */,
-				FC02C2351498606C00605FD4 /* MainViewController.xib */,
 				FC02C22814985FB500605FD4 /* AreaPlan.xcdatamodeld */,
 				FC02C21D14985FB500605FD4 /* Supporting Files */,
 			);
@@ -118,6 +115,25 @@
 				FC02C2471498E82E00605FD4 /* ParentViewController.h */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		FC02C2491498F4CC00605FD4 /* ViewNibs */ = {
+			isa = PBXGroup;
+			children = (
+				FC02C2351498606C00605FD4 /* MainViewController.xib */,
+			);
+			name = ViewNibs;
+			sourceTree = "<group>";
+		};
+		FC02C24A1498F4FF00605FD4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FC02C2331498606C00605FD4 /* MainViewController.h */,
+				FC02C2341498606C00605FD4 /* MainViewController.m */,
+				FC02C2301498601900605FD4 /* MasterViewController.h */,
+				FC02C2311498601900605FD4 /* MasterViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
