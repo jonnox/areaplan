@@ -22,9 +22,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     //self.window.backgroundColor = [UIColor whiteColor];
-    self.masterViewController = [[MasterViewController alloc] initWithNibName:nil bundle:nil];
+    self.masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterNib" bundle:nil];
     self.window.rootViewController = self.masterViewController;
     [self.window makeKeyAndVisible];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    
     return YES;
 }
 

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ParentViewController.h"
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController <ParentViewController>{
+    MasterViewController *MVC;
+}
+
+-(IBAction)click:(id)sender;
 
 @end

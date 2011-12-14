@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @class MasterViewController;
+@class MainViewController;
+@class MapViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>{
     IBOutlet UIWindow *window;

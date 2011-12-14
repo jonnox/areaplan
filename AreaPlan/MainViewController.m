@@ -13,7 +13,7 @@
 @synthesize MVC;
 
 -(IBAction)click:(id)sender{
-    [self.MVC switchToViewByID:MAIN_VIEW_ID];
+    [self.MVC switchToViewByID:MAP_VIEW_ID];
 }
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andWithMasterViewController:(MasterViewController *) mvc{

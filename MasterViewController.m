@@ -8,15 +8,67 @@
 
 #import "MasterViewController.h"
 #import "MainViewController.h"
+#import "MapViewController.h"
 
 int const MAIN_VIEW_ID = 0;
+int const MAP_VIEW_ID = 1;
 
 @implementation MasterViewController
 
-@synthesize mainViewController;
+@synthesize mainViewController,mapViewController;
+@synthesize currentViewID;
 
 -(void)switchToViewByID:(int)viewID{
-    NSLog(@"Switch for screen %d requested",viewID);
+    UIViewController *currViewCont;
+    UIViewController *nextViewCont;
+    
+    int fromViewID = currentViewID;
+    
+    switch (viewID) {
+        case MAIN_VIEW_ID:
+            if(self.mainViewController == nil)
+                self.mainViewController = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil andWithMasterViewController:self];
+            nextViewCont = self.mainViewController;
+            currentViewID = MAIN_VIEW_ID;
+            break;
+            
+        case MAP_VIEW_ID:
+            if(self.mapViewController == nil)
+                self.mapViewController = [[MapViewController alloc] initWithNibName:@"MapView" bundle:nil andWithMasterViewController:self];
+            
+            nextViewCont = self.mapViewController;
+            currentViewID = MAP_VIEW_ID;
+            [self willRotateToInterfaceOrientation:UIInterfaceOrientationLandscapeRight duration: 0];
+            break;
+    }
+    
+    switch (fromViewID) {
+        case MAIN_VIEW_ID:
+            currViewCont = self.mainViewController;
+            break;
+        case MAP_VIEW_ID:
+            currViewCont = self.mapViewController;
+            break;
+    }
+
+	
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:1];
+	[UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.view cache:YES];
+    
+    [nextViewCont viewWillAppear:YES];
+    [currViewCont viewWillDisappear:YES];
+    
+    [self.view addSubview:nextViewCont.view];
+    
+    //self.view = nextViewCont.view;
+    
+    
+    [currViewCont.view removeFromSuperview];
+    [currViewCont viewDidDisappear:YES];
+    [nextViewCont viewDidAppear:YES];
+    [UIView commitAnimations];
+     
 }
 
 /**
@@ -30,8 +82,10 @@ int const MAIN_VIEW_ID = 0;
 	viewController=nil; // [viewController release];
     
     // Display Main View
-    //self.view=nil;
-    self.view = mainViewController.view;
+    [self.view addSubview:mainViewController.view];
+    
+    
+    self.currentViewID = MAIN_VIEW_ID;
     //[self viewDidAppear:YES];
 }
 
@@ -79,7 +133,13 @@ int const MAIN_VIEW_ID = 0;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    if(currentViewID == MAP_VIEW_ID)
+        return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+                interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+    else if(currentViewID == MAIN_VIEW_ID)
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    
+    return YES;
 }
 
 @end

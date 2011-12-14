@@ -20,6 +20,8 @@
 		FC02C2371498606C00605FD4 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC02C2351498606C00605FD4 /* MainView.xib */; };
 		FC02C24E1498F5F000605FD4 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC02C24C1498F5F000605FD4 /* MapViewController.m */; };
 		FC02C24F1498F5F000605FD4 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC02C24D1498F5F000605FD4 /* MapView.xib */; };
+		FC02C25814992EB700605FD4 /* MasterNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC02C25614992EB700605FD4 /* MasterNib.xib */; };
+		FC02C25A14993A6A00605FD4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FC02C25914993A6A00605FD4 /* icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		FC02C24B1498F5F000605FD4 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = AreaPlan/MapViewController.h; sourceTree = "<group>"; };
 		FC02C24C1498F5F000605FD4 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = AreaPlan/MapViewController.m; sourceTree = "<group>"; };
 		FC02C24D1498F5F000605FD4 /* MapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapView.xib; path = AreaPlan/MapView.xib; sourceTree = "<group>"; };
+		FC02C25614992EB700605FD4 /* MasterNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterNib.xib; sourceTree = "<group>"; };
+		FC02C25914993A6A00605FD4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 		FC02C21D14985FB500605FD4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FC02C25914993A6A00605FD4 /* icon.png */,
 				FC02C21E14985FB500605FD4 /* AreaPlan-Info.plist */,
 				FC02C21F14985FB500605FD4 /* InfoPlist.strings */,
 				FC02C22214985FB500605FD4 /* main.m */,
@@ -125,6 +130,7 @@
 		FC02C2491498F4CC00605FD4 /* ViewNibs */ = {
 			isa = PBXGroup;
 			children = (
+				FC02C25614992EB700605FD4 /* MasterNib.xib */,
 				FC02C24D1498F5F000605FD4 /* MapView.xib */,
 				FC02C2351498606C00605FD4 /* MainView.xib */,
 			);
@@ -197,6 +203,8 @@
 				FC02C22114985FB500605FD4 /* InfoPlist.strings in Resources */,
 				FC02C2371498606C00605FD4 /* MainView.xib in Resources */,
 				FC02C24F1498F5F000605FD4 /* MapView.xib in Resources */,
+				FC02C25814992EB700605FD4 /* MasterNib.xib in Resources */,
+				FC02C25A14993A6A00605FD4 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
