@@ -1,0 +1,284 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FC02C21514985FB500605FD4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC02C21414985FB500605FD4 /* UIKit.framework */; };
+		FC02C21714985FB500605FD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC02C21614985FB500605FD4 /* Foundation.framework */; };
+		FC02C21914985FB500605FD4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC02C21814985FB500605FD4 /* CoreGraphics.framework */; };
+		FC02C21B14985FB500605FD4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC02C21A14985FB500605FD4 /* CoreData.framework */; };
+		FC02C22114985FB500605FD4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FC02C21F14985FB500605FD4 /* InfoPlist.strings */; };
+		FC02C22314985FB500605FD4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC02C22214985FB500605FD4 /* main.m */; };
+		FC02C22714985FB500605FD4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC02C22614985FB500605FD4 /* AppDelegate.m */; };
+		FC02C22A14985FB500605FD4 /* AreaPlan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC02C22814985FB500605FD4 /* AreaPlan.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FC02C21014985FB500605FD4 /* AreaPlan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AreaPlan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC02C21414985FB500605FD4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FC02C21614985FB500605FD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FC02C21814985FB500605FD4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FC02C21A14985FB500605FD4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FC02C21E14985FB500605FD4 /* AreaPlan-Info.plist */ = {isa = PBXFileReference; path = "AreaPlan-Info.plist"; sourceTree = "<group>"; };
+		FC02C22014985FB500605FD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FC02C22214985FB500605FD4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FC02C22414985FB500605FD4 /* AreaPlan-Prefix.pch */ = {isa = PBXFileReference; path = "AreaPlan-Prefix.pch"; sourceTree = "<group>"; };
+		FC02C22514985FB500605FD4 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		FC02C22614985FB500605FD4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FC02C22914985FB500605FD4 /* AreaPlan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AreaPlan.xcdatamodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FC02C20D14985FB500605FD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC02C21514985FB500605FD4 /* UIKit.framework in Frameworks */,
+				FC02C21714985FB500605FD4 /* Foundation.framework in Frameworks */,
+				FC02C21914985FB500605FD4 /* CoreGraphics.framework in Frameworks */,
+				FC02C21B14985FB500605FD4 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FC02C20514985FB500605FD4 = {
+			isa = PBXGroup;
+			children = (
+				FC02C21C14985FB500605FD4 /* AreaPlan */,
+				FC02C21314985FB500605FD4 /* Frameworks */,
+				FC02C21114985FB500605FD4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FC02C21114985FB500605FD4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC02C21014985FB500605FD4 /* AreaPlan.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FC02C21314985FB500605FD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC02C21414985FB500605FD4 /* UIKit.framework */,
+				FC02C21614985FB500605FD4 /* Foundation.framework */,
+				FC02C21814985FB500605FD4 /* CoreGraphics.framework */,
+				FC02C21A14985FB500605FD4 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC02C21C14985FB500605FD4 /* AreaPlan */ = {
+			isa = PBXGroup;
+			children = (
+				FC02C22514985FB500605FD4 /* AppDelegate.h */,
+				FC02C22614985FB500605FD4 /* AppDelegate.m */,
+				FC02C22814985FB500605FD4 /* AreaPlan.xcdatamodeld */,
+				FC02C21D14985FB500605FD4 /* Supporting Files */,
+			);
+			path = AreaPlan;
+			sourceTree = "<group>";
+		};
+		FC02C21D14985FB500605FD4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FC02C21E14985FB500605FD4 /* AreaPlan-Info.plist */,
+				FC02C21F14985FB500605FD4 /* InfoPlist.strings */,
+				FC02C22214985FB500605FD4 /* main.m */,
+				FC02C22414985FB500605FD4 /* AreaPlan-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FC02C20F14985FB500605FD4 /* AreaPlan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC02C22D14985FB500605FD4 /* Build configuration list for PBXNativeTarget "AreaPlan" */;
+			buildPhases = (
+				FC02C20C14985FB500605FD4 /* Sources */,
+				FC02C20D14985FB500605FD4 /* Frameworks */,
+				FC02C20E14985FB500605FD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AreaPlan;
+			productName = AreaPlan;
+			productReference = FC02C21014985FB500605FD4 /* AreaPlan.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FC02C20714985FB500605FD4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = FC02C20A14985FB500605FD4 /* Build configuration list for PBXProject "AreaPlan" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FC02C20514985FB500605FD4;
+			productRefGroup = FC02C21114985FB500605FD4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FC02C20F14985FB500605FD4 /* AreaPlan */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FC02C20E14985FB500605FD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC02C22114985FB500605FD4 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FC02C20C14985FB500605FD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC02C22314985FB500605FD4 /* main.m in Sources */,
+				FC02C22714985FB500605FD4 /* AppDelegate.m in Sources */,
+				FC02C22A14985FB500605FD4 /* AreaPlan.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FC02C21F14985FB500605FD4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC02C22014985FB500605FD4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FC02C22B14985FB500605FD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FC02C22C14985FB500605FD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FC02C22E14985FB500605FD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AreaPlan/AreaPlan-Prefix.pch";
+				INFOPLIST_FILE = "AreaPlan/AreaPlan-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FC02C22F14985FB500605FD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AreaPlan/AreaPlan-Prefix.pch";
+				INFOPLIST_FILE = "AreaPlan/AreaPlan-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FC02C20A14985FB500605FD4 /* Build configuration list for PBXProject "AreaPlan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC02C22B14985FB500605FD4 /* Debug */,
+				FC02C22C14985FB500605FD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC02C22D14985FB500605FD4 /* Build configuration list for PBXNativeTarget "AreaPlan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC02C22E14985FB500605FD4 /* Debug */,
+				FC02C22F14985FB500605FD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FC02C22814985FB500605FD4 /* AreaPlan.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FC02C22914985FB500605FD4 /* AreaPlan.xcdatamodel */,
+			);
+			currentVersion = FC02C22914985FB500605FD4 /* AreaPlan.xcdatamodel */;
+			path = AreaPlan.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FC02C20714985FB500605FD4 /* Project object */;
+}
