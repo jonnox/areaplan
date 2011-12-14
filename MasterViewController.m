@@ -24,7 +24,7 @@ int const MAIN_VIEW_ID = 0;
  */
 - (void)viewDidLoad
 {
-    MainViewController *viewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil andWithMasterViewController:self];
+    MainViewController *viewController = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil andWithMasterViewController:self];
 	self.mainViewController = viewController;
     
 	viewController=nil; // [viewController release];

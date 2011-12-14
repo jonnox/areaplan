@@ -17,7 +17,9 @@
 		FC02C22A14985FB500605FD4 /* AreaPlan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC02C22814985FB500605FD4 /* AreaPlan.xcdatamodeld */; };
 		FC02C2321498601900605FD4 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC02C2311498601900605FD4 /* MasterViewController.m */; };
 		FC02C2361498606C00605FD4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC02C2341498606C00605FD4 /* MainViewController.m */; };
-		FC02C2371498606C00605FD4 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC02C2351498606C00605FD4 /* MainViewController.xib */; };
+		FC02C2371498606C00605FD4 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC02C2351498606C00605FD4 /* MainView.xib */; };
+		FC02C24E1498F5F000605FD4 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC02C24C1498F5F000605FD4 /* MapViewController.m */; };
+		FC02C24F1498F5F000605FD4 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC02C24D1498F5F000605FD4 /* MapView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,8 +39,11 @@
 		FC02C2311498601900605FD4 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		FC02C2331498606C00605FD4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = AreaPlan/MainViewController.h; sourceTree = "<group>"; };
 		FC02C2341498606C00605FD4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = AreaPlan/MainViewController.m; sourceTree = "<group>"; };
-		FC02C2351498606C00605FD4 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = AreaPlan/MainViewController.xib; sourceTree = "<group>"; };
+		FC02C2351498606C00605FD4 /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainView.xib; path = AreaPlan/MainView.xib; sourceTree = "<group>"; };
 		FC02C2471498E82E00605FD4 /* ParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentViewController.h; sourceTree = "<group>"; };
+		FC02C24B1498F5F000605FD4 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = AreaPlan/MapViewController.h; sourceTree = "<group>"; };
+		FC02C24C1498F5F000605FD4 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = AreaPlan/MapViewController.m; sourceTree = "<group>"; };
+		FC02C24D1498F5F000605FD4 /* MapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapView.xib; path = AreaPlan/MapView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +125,8 @@
 		FC02C2491498F4CC00605FD4 /* ViewNibs */ = {
 			isa = PBXGroup;
 			children = (
-				FC02C2351498606C00605FD4 /* MainViewController.xib */,
+				FC02C24D1498F5F000605FD4 /* MapView.xib */,
+				FC02C2351498606C00605FD4 /* MainView.xib */,
 			);
 			name = ViewNibs;
 			sourceTree = "<group>";
@@ -128,6 +134,8 @@
 		FC02C24A1498F4FF00605FD4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FC02C24B1498F5F000605FD4 /* MapViewController.h */,
+				FC02C24C1498F5F000605FD4 /* MapViewController.m */,
 				FC02C2331498606C00605FD4 /* MainViewController.h */,
 				FC02C2341498606C00605FD4 /* MainViewController.m */,
 				FC02C2301498601900605FD4 /* MasterViewController.h */,
@@ -187,7 +195,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC02C22114985FB500605FD4 /* InfoPlist.strings in Resources */,
-				FC02C2371498606C00605FD4 /* MainViewController.xib in Resources */,
+				FC02C2371498606C00605FD4 /* MainView.xib in Resources */,
+				FC02C24F1498F5F000605FD4 /* MapView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +212,7 @@
 				FC02C22A14985FB500605FD4 /* AreaPlan.xcdatamodeld in Sources */,
 				FC02C2321498601900605FD4 /* MasterViewController.m in Sources */,
 				FC02C2361498606C00605FD4 /* MainViewController.m in Sources */,
+				FC02C24E1498F5F000605FD4 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
