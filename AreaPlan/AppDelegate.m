@@ -7,10 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "MasterViewController.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize masterViewController = _masterViewController;
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
@@ -19,7 +21,9 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    //self.window.backgroundColor = [UIColor whiteColor];
+    self.masterViewController = [[MasterViewController alloc] initWithNibName:nil bundle:nil];
+    self.window.rootViewController = self.masterViewController;
     [self.window makeKeyAndVisible];
     return YES;
 }

@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@class MasterViewController;
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate>{
+    IBOutlet UIWindow *window;
+	IBOutlet MasterViewController *masterViewController;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, retain) MasterViewController *masterViewController;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
