@@ -14,9 +14,11 @@
 
 @interface MapViewController : UIViewController 
         <ParentViewController,UIActionSheetDelegate>{
-    MasterViewController *MVC;
-    IBOutlet QuartzView *overlay;
-    IBOutlet ZoomScroller *zoomScroller;
+            MasterViewController *MVC;
+            IBOutlet QuartzView *overlay;
+            IBOutlet ZoomScroller *zoomScroller;
+            IBOutlet UIImageView *rightButtonImage;
+            IBOutlet UIImageView *leftButtonImage;
 }
 
 @property (retain,nonatomic) QuartzView *overlay;
@@ -28,6 +30,10 @@
 
 - (IBAction)rightButton:(id)sender;
 - (IBAction)leftButton:(id)sender;
+
+- (IBAction)rightButtonInitialPress:(id)sender;
+- (IBAction)leftButtonInitialPress:(id)sender;
+
 - (IBAction)handleSingleDoubleTap:(UIGestureRecognizer *)sender;
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
 

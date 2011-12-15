@@ -47,13 +47,14 @@ int const SEL_SETTINGS = 2;
             otherButtonTitles:@"Search",@"Main Menu",@"Settings",nil];
 	[actionSheet showInView:[[self view] window]];
 	actionSheet = nil;
+    rightButtonImage.alpha = 0.5;
 }
 
 /**
  * Called when the user click the main LEFT button.
  */
 - (IBAction)leftButton:(id)sender{
-    
+    leftButtonImage.alpha = 0.5;
 }
 
 /**
@@ -97,20 +98,37 @@ int const SEL_SETTINGS = 2;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.MVC = mvc;
-        
         mapprop_name = @"UOIT - UA";
     }
     return self;
 }
 
+- (IBAction)rightButtonInitialPress:(id)sender{
+    UIButton *btn = (UIButton *)sender;
+    if(btn.state == UIControlStateHighlighted)
+        rightButtonImage.alpha = 1.0;
+    else
+        rightButtonImage.alpha = 0.5;
+}
+
+- (IBAction)leftButtonInitialPress:(id)sender{
+    UIButton *btn = (UIButton *)sender;
+    if(btn.state == UIControlStateHighlighted)
+        leftButtonImage.alpha = 1.0;
+    else
+        leftButtonImage.alpha = 0.5;
+}
+
+/*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
+*/
 
 - (void)didReceiveMemoryWarning
 {
@@ -126,6 +144,19 @@ int const SEL_SETTINGS = 2;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    UIImage *image = [UIImage imageNamed:@"floorplan.jpg"];
+    [self.zoomScroller setImage:image withZoomMax:3.0 andZoomMin:0.5];
+    
+    // Cool reveal animation, complements of jonnox
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:2];
+    [self.overlay setBackgroundColor:[UIColor clearColor]];
+    [UIView commitAnimations];
+    
+    [self.zoomScroller setContentOffset:CGPointMake((image.size.width / 2) - self.zoomScroller.frame.size.width,(image.size.height / 2) - self.zoomScroller.frame.size.height) animated:NO];
+    [self.zoomScroller setZoomScale:0.5 animated:NO];
+    
     
     /*
     // Rotates the view.
