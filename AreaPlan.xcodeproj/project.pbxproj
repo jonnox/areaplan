@@ -25,6 +25,7 @@
 		FC02C267149A3FF200605FD4 /* right_button.png in Resources */ = {isa = PBXBuildFile; fileRef = FC02C265149A3FF200605FD4 /* right_button.png */; };
 		FC02C268149A3FF200605FD4 /* left_button.png in Resources */ = {isa = PBXBuildFile; fileRef = FC02C266149A3FF200605FD4 /* left_button.png */; };
 		FC02C26C149A407400605FD4 /* ZoomScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = FC02C26B149A407400605FD4 /* ZoomScroller.m */; };
+		FC875D6C149A62100026E120 /* QuartzView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC875D6B149A62100026E120 /* QuartzView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,8 @@
 		FC02C266149A3FF200605FD4 /* left_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_button.png; sourceTree = "<group>"; };
 		FC02C26A149A407400605FD4 /* ZoomScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomScroller.h; sourceTree = "<group>"; };
 		FC02C26B149A407400605FD4 /* ZoomScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomScroller.m; sourceTree = "<group>"; };
+		FC875D6A149A62100026E120 /* QuartzView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuartzView.h; sourceTree = "<group>"; };
+		FC875D6B149A62100026E120 /* QuartzView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuartzView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +168,8 @@
 			children = (
 				FC02C26A149A407400605FD4 /* ZoomScroller.h */,
 				FC02C26B149A407400605FD4 /* ZoomScroller.m */,
+				FC875D6A149A62100026E120 /* QuartzView.h */,
+				FC875D6B149A62100026E120 /* QuartzView.m */,
 			);
 			name = Customized;
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 				FC02C2361498606C00605FD4 /* MainViewController.m in Sources */,
 				FC02C24E1498F5F000605FD4 /* MapViewController.m in Sources */,
 				FC02C26C149A407400605FD4 /* ZoomScroller.m in Sources */,
+				FC875D6C149A62100026E120 /* QuartzView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +352,7 @@
 				FC02C22F14985FB500605FD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

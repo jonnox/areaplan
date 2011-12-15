@@ -9,22 +9,96 @@
 #import "MapViewController.h"
 
 #import "AppDelegate.h"
+#import "ZoomScroller.h"
+#import "QuartzView.h"
+
+int const SEL_SEARCH = 0;
+int const SEL_MAIN_MENU = 1;
+int const SEL_SETTINGS = 2;
 
 @implementation MapViewController
 
-/**
- * MasterViewController to switch between global views
- */
+//MasterViewController to switch between global views
 @synthesize MVC;
+// create getters and setters for the view components
+@synthesize overlay,zoomScroller;
+
+@synthesize mapprop_name;
 
 -(IBAction)click:(id)sender{
-    [self.MVC switchToViewByID:MAIN_VIEW_ID];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:mapprop_name
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Search",@"Main Menu",@"Settings",nil];
+	[actionSheet showInView:[[self view] window]];
+	actionSheet = nil;
 }
 
+/**
+ * Called when the user click the main RIGHT button. Activates
+ * an action sheet
+ */
+- (IBAction)rightButton:(id)sender{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:mapprop_name
+            delegate:self
+            cancelButtonTitle:@"Cancel"
+            destructiveButtonTitle:nil
+            otherButtonTitles:@"Search",@"Main Menu",@"Settings",nil];
+	[actionSheet showInView:[[self view] window]];
+	actionSheet = nil;
+}
+
+/**
+ * Called when the user click the main LEFT button.
+ */
+- (IBAction)leftButton:(id)sender{
+    
+}
+
+/**
+ * Actions to perform from RIGHT (settings) button press
+ */
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"Selected option: %d",buttonIndex);
+    
+    switch (buttonIndex) {
+        case SEL_SEARCH:
+            break;
+        
+        case SEL_MAIN_MENU:
+            [self.MVC switchToViewByID:MAIN_VIEW_ID];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+/**
+ * Executed when a user taps on the map at a given point. Accounts
+ * for pan and zoom of image.
+ */
+- (IBAction)handleSingleDoubleTap:(UIGestureRecognizer *)sender {
+    CGPoint p = [sender locationInView:self.zoomScroller];
+    CGPoint offset = zoomScroller.contentOffset;
+    //NSLog(@"Location: %f,%f",p.x,p.y);
+    NSLog(@"Location (zoom): (%f,%f)",p.x / zoomScroller.zoomScale,p.y / zoomScroller.zoomScale);
+    //NSLog(@"Offset: (%f,%f)",offset.x,offset.y);
+    NSLog(@"Offset (zoom): (%f,%f)",offset.x / zoomScroller.zoomScale,offset.y / zoomScroller.zoomScale);
+    NSLog(@"Bottom Right: (%f,%f)",(offset.x  + zoomScroller.bounds.size.width) / zoomScroller.zoomScale,(offset.y + zoomScroller.bounds.size.height) / zoomScroller.zoomScale );
+}
+
+/**
+ * Initializes controller with a link to the program's root view
+ * controller. This enables this controller to ask to change the view
+ */
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andWithMasterViewController:(MasterViewController *) mvc{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.MVC = mvc;
+        
+        mapprop_name = @"UOIT - UA";
     }
     return self;
 }
