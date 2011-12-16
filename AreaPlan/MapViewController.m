@@ -160,8 +160,18 @@ int const SEL_SETTINGS = 2;
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSLog(@"Selected option: %d",buttonIndex);
     
+    NSMutableArray *p1 = [[NSMutableArray alloc] init];
+    NSMutableArray *p2 = [[NSMutableArray alloc] init];
+    BOOL bl;
+    int i;
+    
     switch (buttonIndex) {
         case SEL_SEARCH:
+            bl = [MVC getMapList:p1 withNames:p2];
+            NSLog(@"getmaplist returned %d",bl);
+            for(i = 0; i < [p1 count]; i++){
+                NSLog(@"%@ - %@",[p1 objectAtIndex:i],[p2 objectAtIndex:i]);
+            }
             break;
         
         case SEL_MAIN_MENU:

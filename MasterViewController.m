@@ -9,6 +9,7 @@
 #import "MasterViewController.h"
 #import "MainViewController.h"
 #import "MapViewController.h"
+#import <sqlite3.h>
 
 int const MAIN_VIEW_ID = 0;
 int const MAP_VIEW_ID = 1;
@@ -107,6 +108,40 @@ int const MAP_VIEW_ID = 1;
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+/**
+ * Load given map and change to that map
+ */
+-(void)mapSelector:(NSNumber *)mapID{
+    
+}
+/**
+ * Populate the list of installed maps with their ID's
+ */
+-(BOOL)getMapList:(NSMutableArray *)mapIDList withNames:(NSMutableArray *)mapNameList{
+    
+    // Both need to be initialized outside of this function call
+    if(mapIDList == nil || mapNameList == nil)
+        return NO;
+    
+    sqlite3 *dbptr;
+    sqlite3_stmt *sqlstmtptr;
+    
+    if(sqlite3_open([[[NSBundle mainBundle] pathForResource:@"areaplan" ofType:@"db"] UTF8String], &dbptr) == SQLITE_OK){
+        sqlite3_prepare(dbptr, "SELECT id,name from maps", -1, &sqlstmtptr, NULL);
+        while(sqlite3_step(sqlstmtptr) == SQLITE_ROW){
+            [mapIDList addObject:[NSNumber numberWithInt:sqlite3_column_int(sqlstmtptr, 0)]];
+            [mapNameList addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(sqlstmtptr, 1)]];
+        }
+    }else{
+        NSLog(@"Error: %s",sqlite3_errmsg(dbptr));
+        return NO;
+    }
+    
+    
+    
+    return YES;
 }
 
 #pragma mark - View lifecycle
