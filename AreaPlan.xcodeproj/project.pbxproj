@@ -22,6 +22,11 @@
 		FC02C24F1498F5F000605FD4 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC02C24D1498F5F000605FD4 /* MapView.xib */; };
 		FC02C25814992EB700605FD4 /* MasterNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC02C25614992EB700605FD4 /* MasterNib.xib */; };
 		FC02C25A14993A6A00605FD4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FC02C25914993A6A00605FD4 /* icon.png */; };
+		FC02C267149A3FF200605FD4 /* right_button.png in Resources */ = {isa = PBXBuildFile; fileRef = FC02C265149A3FF200605FD4 /* right_button.png */; };
+		FC02C268149A3FF200605FD4 /* left_button.png in Resources */ = {isa = PBXBuildFile; fileRef = FC02C266149A3FF200605FD4 /* left_button.png */; };
+		FC02C26C149A407400605FD4 /* ZoomScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = FC02C26B149A407400605FD4 /* ZoomScroller.m */; };
+		FC875D6C149A62100026E120 /* QuartzView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC875D6B149A62100026E120 /* QuartzView.m */; };
+		FC875D6E149A73D60026E120 /* floorplan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FC875D6D149A73D60026E120 /* floorplan.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +53,13 @@
 		FC02C24D1498F5F000605FD4 /* MapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapView.xib; path = AreaPlan/MapView.xib; sourceTree = "<group>"; };
 		FC02C25614992EB700605FD4 /* MasterNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterNib.xib; sourceTree = "<group>"; };
 		FC02C25914993A6A00605FD4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		FC02C265149A3FF200605FD4 /* right_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_button.png; sourceTree = "<group>"; };
+		FC02C266149A3FF200605FD4 /* left_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_button.png; sourceTree = "<group>"; };
+		FC02C26A149A407400605FD4 /* ZoomScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomScroller.h; sourceTree = "<group>"; };
+		FC02C26B149A407400605FD4 /* ZoomScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomScroller.m; sourceTree = "<group>"; };
+		FC875D6A149A62100026E120 /* QuartzView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuartzView.h; sourceTree = "<group>"; };
+		FC875D6B149A62100026E120 /* QuartzView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuartzView.m; sourceTree = "<group>"; };
+		FC875D6D149A73D60026E120 /* floorplan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = floorplan.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +80,7 @@
 		FC02C20514985FB500605FD4 = {
 			isa = PBXGroup;
 			children = (
+				FC02C269149A401F00605FD4 /* Customized */,
 				FC02C24A1498F4FF00605FD4 /* ViewControllers */,
 				FC02C2491498F4CC00605FD4 /* ViewNibs */,
 				FC02C2461498E7E200605FD4 /* Protocols */,
@@ -110,6 +123,9 @@
 		FC02C21D14985FB500605FD4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FC875D6D149A73D60026E120 /* floorplan.jpg */,
+				FC02C266149A3FF200605FD4 /* left_button.png */,
+				FC02C265149A3FF200605FD4 /* right_button.png */,
 				FC02C25914993A6A00605FD4 /* icon.png */,
 				FC02C21E14985FB500605FD4 /* AreaPlan-Info.plist */,
 				FC02C21F14985FB500605FD4 /* InfoPlist.strings */,
@@ -148,6 +164,17 @@
 				FC02C2311498601900605FD4 /* MasterViewController.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FC02C269149A401F00605FD4 /* Customized */ = {
+			isa = PBXGroup;
+			children = (
+				FC02C26A149A407400605FD4 /* ZoomScroller.h */,
+				FC02C26B149A407400605FD4 /* ZoomScroller.m */,
+				FC875D6A149A62100026E120 /* QuartzView.h */,
+				FC875D6B149A62100026E120 /* QuartzView.m */,
+			);
+			name = Customized;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +232,9 @@
 				FC02C24F1498F5F000605FD4 /* MapView.xib in Resources */,
 				FC02C25814992EB700605FD4 /* MasterNib.xib in Resources */,
 				FC02C25A14993A6A00605FD4 /* icon.png in Resources */,
+				FC02C267149A3FF200605FD4 /* right_button.png in Resources */,
+				FC02C268149A3FF200605FD4 /* left_button.png in Resources */,
+				FC875D6E149A73D60026E120 /* floorplan.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +251,8 @@
 				FC02C2321498601900605FD4 /* MasterViewController.m in Sources */,
 				FC02C2361498606C00605FD4 /* MainViewController.m in Sources */,
 				FC02C24E1498F5F000605FD4 /* MapViewController.m in Sources */,
+				FC02C26C149A407400605FD4 /* ZoomScroller.m in Sources */,
+				FC875D6C149A62100026E120 /* QuartzView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +356,7 @@
 				FC02C22F14985FB500605FD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

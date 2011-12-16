@@ -54,7 +54,10 @@ int const MAP_VIEW_ID = 1;
 	
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:1];
-	[UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.view cache:YES];
+    if(fromViewID < currentViewID)
+        [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.view cache:YES];
+    else
+        [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self.view cache:YES];
     
     [nextViewCont viewWillAppear:YES];
     [currViewCont viewWillDisappear:YES];
