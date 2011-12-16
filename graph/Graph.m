@@ -67,6 +67,7 @@
    return YES;
 }
 
+/*
 - (NSMutableArray*) getEdgesForVertexID: (int)sourceID
 {
    int i;
@@ -82,7 +83,7 @@
       }
    }
    return connections;
-}
+}*/
 
 - (void) computePathsFromSource: (int)sourceID
 {
@@ -100,7 +101,7 @@
    while([self queueIsEmpty] == NO)
    {
       Vertex *u = [self getVertexFromPriorityQueue];
-      NSMutableArray *uEdges = [self getEdgesForVertexID:[u id]];
+      NSArray *uEdges = [u edges];
       
       int i;
       for(i = 0; i < [uEdges count]; i++)
