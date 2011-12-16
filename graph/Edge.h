@@ -5,11 +5,12 @@
    int id;
    int sourceID;
    int destID;
-   int weight;
+   double weight;
 }
 
-@property int id, sourceID, destID, weight;
+@property int id, sourceID, destID;
+@property double weight;
 
-- (id) initWithID: (int)newID SourceID: (int)newSource DestID: (int)newDest Weight: (int)newWeight;
+- (id) initWithID: (int)newID SourceID: (int)newSource DestID: (int)newDest Weight: (double)newWeight;
 
 @end

@@ -2,7 +2,7 @@
 
 @implementation Vertex
 
-@synthesize id, x, y, z;
+@synthesize id, x, y, z, previousID, minDistance, inQueue;
 
 - (id) initWithID: (int)newID X: (int)newX Y: (int)newY Z: (int)newZ
 {
@@ -12,6 +12,9 @@
       self.x = newX;
       self.y = newY;
       self.z = newZ;
+      self.previousID = -1;
+      self.minDistance = 99999;
+      self.inQueue = false;
    }
    return self;
 }

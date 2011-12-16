@@ -4,7 +4,7 @@
 
 @synthesize id, sourceID, destID, weight;
 
-- (id) initWithID: (int)newID SourceID: (int)newSource DestID: (int)newDest Weight: (int)newWeight
+- (id) initWithID: (int)newID SourceID: (int)newSource DestID: (int)newDest Weight: (double)newWeight
 {
    self = [super init];
    if (self != nil) {
