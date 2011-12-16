@@ -37,7 +37,12 @@
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    UIImage *c = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"left_button" ofType:@"png"]];
+    if(img_restroom == nil)
+        img_restroom = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"restroom" ofType:@"png"]];
+    /*
+    UIImage *c = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"restroom" ofType:@"png"]];
+     */
+    UIImage *c = img_restroom;
     CGImageRef cRef = CGImageRetain(c.CGImage);
     int width = [c size].width;
     int height = [c size].height;
