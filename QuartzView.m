@@ -12,6 +12,8 @@
 
 @synthesize xCoords, yCoords, drawType;
 
+enum DrawTypes{ RESTROOM=0, STORE=1, OFFICE=2, CLASSROOM=3, SUITE=4, RESTAURANT=5, PUBLIC_AREA=6, LAB=7, TELEPHONE=8, COMPUTER_INTERNET=9, STAIRS=10, ELEVATOR=11 };
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -34,30 +36,66 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    if(img_restroom == nil)
-        img_restroom = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"restroom" ofType:@"png"]];
-    /*
-    UIImage *c = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"restroom" ofType:@"png"]];
-     */
-    UIImage *c = img_restroom;
-    CGImageRef cRef = CGImageRetain(c.CGImage);
-    int width = [c size].width;
-    int height = [c size].height;
-    
     int i;
+    UIImage *image; 
     
     for(i = 0; i < [xCoords count]; i++)
     {
         int xPos = [[xCoords objectAtIndex:i] intValue];
         int yPos = [[yCoords objectAtIndex:i] intValue];
     
-        NSLog(@"%d, %d, %d, %d", xPos, yPos, width, height);
-        CGContextDrawImage(context, CGRectMake(xPos, yPos, width, height), cRef);
+        int type = [[drawType objectAtIndex:i] intValue];
+        NSString *imageFilename;
+        
+        switch(type)
+        {
+            case RESTROOM:
+                imageFilename = [[NSString alloc] initWithFormat:@"restroom"];
+                break;
+            case STORE:
+                
+                break;
+            case OFFICE:
+                
+                break;
+            case CLASSROOM:
+                
+                break;
+            case SUITE:
+                
+                break;
+            case RESTAURANT:
+                imageFilename = [[NSString alloc] initWithFormat:@"restaurant"];
+                break;
+            case PUBLIC_AREA:
+                
+                break;
+            case LAB:
+                
+                break;
+            case TELEPHONE:
+                
+                break;
+            case COMPUTER_INTERNET:
+                
+                break;
+            case STAIRS:
+                
+                break;
+            case ELEVATOR:
+                
+                break;
+            default:
+                imageFilename = [[NSString alloc] initWithFormat:@"left_button"];
+        }
+        image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imageFilename ofType:@"png"]];
+        
+        //NSLog(@"%@", imageFilename);
+        int width = [image size].width;
+        int height = [image size].height;
+        [image drawInRect:CGRectMake(xPos, yPos, width, height)];
+
     }
-    // 1186.000000,734.000000
 }
 
 

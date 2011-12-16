@@ -28,7 +28,7 @@
 		FC875D6C149A62100026E120 /* QuartzView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC875D6B149A62100026E120 /* QuartzView.m */; };
 		FC875D6E149A73D60026E120 /* floorplan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FC875D6D149A73D60026E120 /* floorplan.jpg */; };
 		FC875D71149AE7ED0026E120 /* restroom.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D6F149AE7EC0026E120 /* restroom.png */; };
-		FC875D72149AE7ED0026E120 /* resturant.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D70149AE7ED0026E120 /* resturant.png */; };
+		FC875D72149AE7ED0026E120 /* restaurant.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D70149AE7ED0026E120 /* restaurant.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +63,7 @@
 		FC875D6B149A62100026E120 /* QuartzView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuartzView.m; sourceTree = "<group>"; };
 		FC875D6D149A73D60026E120 /* floorplan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = floorplan.jpg; sourceTree = "<group>"; };
 		FC875D6F149AE7EC0026E120 /* restroom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restroom.png; sourceTree = "<group>"; };
-		FC875D70149AE7ED0026E120 /* resturant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resturant.png; sourceTree = "<group>"; };
+		FC875D70149AE7ED0026E120 /* restaurant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +129,7 @@
 			children = (
 				FC875D6D149A73D60026E120 /* floorplan.jpg */,
 				FC875D6F149AE7EC0026E120 /* restroom.png */,
-				FC875D70149AE7ED0026E120 /* resturant.png */,
+				FC875D70149AE7ED0026E120 /* restaurant.png */,
 				FC02C266149A3FF200605FD4 /* left_button.png */,
 				FC02C265149A3FF200605FD4 /* right_button.png */,
 				FC02C25914993A6A00605FD4 /* icon.png */,
@@ -242,7 +242,7 @@
 				FC02C268149A3FF200605FD4 /* left_button.png in Resources */,
 				FC875D6E149A73D60026E120 /* floorplan.jpg in Resources */,
 				FC875D71149AE7ED0026E120 /* restroom.png in Resources */,
-				FC875D72149AE7ED0026E120 /* resturant.png in Resources */,
+				FC875D72149AE7ED0026E120 /* restaurant.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

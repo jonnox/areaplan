@@ -62,22 +62,22 @@ int const SEL_SETTINGS = 2;
     {
         overlay.yCoords = [[NSMutableArray alloc] init];
     }
-    
+    if(![overlay drawType])
+    {
+        overlay.drawType = [[NSMutableArray alloc] init];
+    }
     [self clearPoints];
     
-    // for each map point
-    
-    
-    // convert to screen coordinates
+    // for each map location get center point
     int x = 532;
-    int y = 572;
-    
+    int y = 572;    
+    int z = 1;
+
     CGPoint offset = zoomScroller.contentOffset;
     int screenMinX = offset.x / zoomScroller.zoomScale;
     int screenMinY = offset.y / zoomScroller.zoomScale;
     int screenMaxX = (offset.x  + zoomScroller.bounds.size.width) / zoomScroller.zoomScale;
     int screenMaxY = (offset.y + zoomScroller.bounds.size.height) / zoomScroller.zoomScale;
-    
     
     CGPoint SMA = CGPointMake(offset.x / zoomScroller.zoomScale,offset.y / zoomScroller.zoomScale);
     CGPoint SMB = CGPointMake((offset.x  + zoomScroller.bounds.size.width) / zoomScroller.zoomScale,(offset.y + zoomScroller.bounds.size.height) / zoomScroller.zoomScale );
@@ -87,24 +87,17 @@ int const SEL_SETTINGS = 2;
                                       zoomScroller.bounds.size.height / ep.y);
     
     // if currently on screen
+    // need to also check z coordinate against current level
     if(x >= screenMinX && y >= screenMinY && x < screenMaxX && y < screenMaxY)
     {
-        
         int ratioX = x - SMA.x;
         int ratioY = y - SMA.y;
         
         int screenX = ratioX * linearInterp.x;
         int screenY = ratioY * linearInterp.y;
         
-        NSLog(@"On screen @ (%d,%d)",screenX,screenY);
-        
         [self addPointX:screenX Y:screenY Type:0];
     }
-    else
-    {
-        //NSLog(@"Off screen (%f,%f) (%d,%d)");
-    }
-
     
     [self.overlay setNeedsDisplay];
 }
@@ -114,7 +107,8 @@ int const SEL_SETTINGS = 2;
  * Scroll view has been changed
  */
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView{
-    // Todo later if doesn't slow down UI too much
+    [self clearPoints];
+    [self.overlay setNeedsDisplay];
 }
 -(void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
