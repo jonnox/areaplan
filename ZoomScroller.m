@@ -24,10 +24,11 @@
     [self setZoomScale:1.0];
 }
 
--(void)setImage: (UIImage *) image withZoomMax:(float) maxLimit andZoomMin:(float) minLimit{
+-(void)setImage: (UIImage *) image withZoomMax:(float) maxLimit andZoomMin:(float) minLimit atZoom:(float)zoom{
     [self setImage: image];
     self.minimumZoomScale=minLimit;
     self.maximumZoomScale=maxLimit;
+    [self setZoomScale:zoom animated:YES];
 }
 
 -(id)init

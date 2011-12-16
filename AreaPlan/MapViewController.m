@@ -11,10 +11,13 @@
 #import "AppDelegate.h"
 #import "ZoomScroller.h"
 #import "QuartzView.h"
+#import <sqlite3.h>
 
 int const SEL_SEARCH = 0;
 int const SEL_MAIN_MENU = 1;
 int const SEL_SETTINGS = 2;
+
+BOOL hasLoaded = NO;
 
 @implementation MapViewController
 
@@ -23,10 +26,10 @@ int const SEL_SETTINGS = 2;
 // create getters and setters for the view components
 @synthesize overlay,zoomScroller;
 
-@synthesize mapprop_name;
+@synthesize cm_ID,cm_level,cm_totallevels,cm_maxzoom,cm_minzoom,cm_location,cm_name, cm_startx, cm_starty;
 
 -(IBAction)click:(id)sender{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:mapprop_name
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:cm_name
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:nil
@@ -137,7 +140,7 @@ int const SEL_SETTINGS = 2;
  * an action sheet
  */
 - (IBAction)rightButton:(id)sender{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:mapprop_name
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:cm_name
             delegate:self
             cancelButtonTitle:@"Cancel"
             destructiveButtonTitle:nil
@@ -198,6 +201,45 @@ int const SEL_SETTINGS = 2;
     
 }
 
+/**
+ * Load a new map for the view to handle
+ */
+-(BOOL)loadNewMap:(int)mapID withName:(NSString *)mapName{
+    self.cm_ID = mapID;
+    self.cm_name = mapName;
+    
+    if(hasLoaded == YES){
+        sqlite3 *dbptr;
+        sqlite3_stmt *sqlstmtptr;
+    
+        if(sqlite3_open([[[NSBundle mainBundle] pathForResource:[[NSString alloc] initWithFormat:@"%d",self.cm_ID] ofType:@"db"] UTF8String], &dbptr) == SQLITE_OK){
+            sqlite3_prepare(dbptr, "SELECT * from mapinfo", -1, &sqlstmtptr, NULL);
+            if(sqlite3_step(sqlstmtptr) == SQLITE_ROW){
+                // Get number of leves
+                self.cm_totallevels = sqlite3_column_int(sqlstmtptr, 0);
+                // Get starting level
+                cm_level = sqlite3_column_int(sqlstmtptr,3);
+            
+                // Set initial offset
+                cm_startx = sqlite3_column_int(sqlstmtptr,1);
+                cm_starty = sqlite3_column_int(sqlstmtptr,2);
+            
+                image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"%d_%d.png",cm_ID,cm_level]];
+                [self.zoomScroller setImage:image withZoomMax:sqlite3_column_double(sqlstmtptr, 5) andZoomMin:sqlite3_column_double(sqlstmtptr, 4) atZoom:sqlite3_column_double(sqlstmtptr, 6)];
+            
+                [zoomScroller setContentOffset:CGPointMake(cm_startx, cm_starty)];
+
+
+            }
+        }else{
+            NSLog(@"Error: %s",sqlite3_errmsg(dbptr));
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
 
 /**
  * Initializes controller with a link to the program's root view
@@ -207,7 +249,7 @@ int const SEL_SETTINGS = 2;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.MVC = mvc;
-        mapprop_name = @"UOIT - UA";
+        cm_name = @"";
     }
     return self;
 }
@@ -252,11 +294,36 @@ int const SEL_SETTINGS = 2;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-
-    image = [UIImage imageNamed:@"floorplan.jpg"];
-    [self.zoomScroller setImage:image withZoomMax:3.0 andZoomMin:0.5];
-    [self.zoomScroller setDelegate:self];
+    
+    hasLoaded = YES;
+    
+    sqlite3 *dbptr;
+    sqlite3_stmt *sqlstmtptr;
+        
+    if(sqlite3_open([[[NSBundle mainBundle] pathForResource:[[NSString alloc] initWithFormat:@"%d",self.cm_ID] ofType:@"db"] UTF8String], &dbptr) == SQLITE_OK){
+        sqlite3_prepare(dbptr, "SELECT * from mapinfo", -1, &sqlstmtptr, NULL);
+        if(sqlite3_step(sqlstmtptr) == SQLITE_ROW){
+            // Get number of leves
+            self.cm_totallevels = sqlite3_column_int(sqlstmtptr, 0);
+            // Get starting level
+            cm_level = sqlite3_column_int(sqlstmtptr,3);
+            
+            // Set initial offset
+            cm_startx = sqlite3_column_int(sqlstmtptr,1);
+            cm_starty = sqlite3_column_int(sqlstmtptr,2);
+            
+            image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"%d_%d.png",cm_ID,cm_level]];
+            
+            
+            [zoomScroller setContentOffset:CGPointMake(cm_startx, cm_starty)];
+            
+            
+            [self.zoomScroller setImage:image withZoomMax:sqlite3_column_double(sqlstmtptr, 5) andZoomMin:sqlite3_column_double(sqlstmtptr, 4) atZoom:sqlite3_column_double(sqlstmtptr, 6)];
+            
+        }
+    }else{
+        NSLog(@"Error: %s",sqlite3_errmsg(dbptr));
+    }
     
     // Cool reveal animation, complements of jonnox
     [UIView beginAnimations:nil context:NULL];
@@ -264,50 +331,10 @@ int const SEL_SETTINGS = 2;
     [self.overlay setBackgroundColor:[UIColor clearColor]];
     [UIView commitAnimations];
     
-    [self.zoomScroller setContentOffset:CGPointMake((image.size.width / 2) - self.zoomScroller.frame.size.width,(image.size.height / 2) - self.zoomScroller.frame.size.height) animated:NO];
-    [self.zoomScroller setZoomScale:0.5 animated:NO];
+    [self.zoomScroller setDelegate:self];
     
-    
-    /*
-    // Rotates the view.
-    CGAffineTransform transform = CGAffineTransformMakeRotation(3.14159/2);
-    self.view.transform = transform;
-	
-    // Repositions and resizes the view.
-    CGRect contentRect = CGRectMake(-80, -80, 480, 320);
-    self.view.bounds = contentRect;
-     */
-    
-    // Testing core data
-    AppDelegate *a = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    [self.zoomScroller setZoomScale:sqlite3_column_double(sqlstmtptr, 6) animated:YES];
 
-    NSManagedObjectContext *context = [a managedObjectContext];
-    NSManagedObject *POI;
-    
-    POI = [NSEntityDescription insertNewObjectForEntityForName:@"POI" inManagedObjectContext:context];
-    [POI setValue:[NSNumber numberWithInt:10] forKey:@"x"];
-    [POI setValue:[NSNumber numberWithInt:11] forKey:@"y"];
-    [POI setValue:[NSNumber numberWithInt:12] forKey:@"z"];
-    NSError *error;
-    [context save:&error];
-    
-    
-    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"POI" inManagedObjectContext:context];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDesc];
-    
-    NSManagedObject *matches = nil;
-    NSArray *objects = [context executeFetchRequest:request error:&error];
-    
-    if([objects count] > 0)
-    {
-        for(int i= 0; i < [objects count]; i++)
-        {
-            matches = [objects objectAtIndex:i];
-            NSNumber *x = [matches valueForKey:@"x"];
-            //NSLog(@"%@", x);
-        }
-    }
 }
 
 - (void)viewDidUnload

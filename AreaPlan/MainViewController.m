@@ -13,7 +13,7 @@
 @synthesize MVC;
 
 -(IBAction)click:(id)sender{
-    [self.MVC switchToViewByID:MAP_VIEW_ID];
+    [MVC mapSelector:10000000 withName:@"UOIT - UA"];
 }
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andWithMasterViewController:(MasterViewController *) mvc{

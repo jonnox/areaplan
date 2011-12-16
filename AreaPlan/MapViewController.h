@@ -20,12 +20,24 @@
             IBOutlet UIImageView *rightButtonImage;
             IBOutlet UIImageView *leftButtonImage;
             UIImage *image;
+            NSString *cm_name;
 }
 
 @property (retain,nonatomic) QuartzView *overlay;
 @property (retain,nonatomic) ZoomScroller *zoomScroller;
+@property (retain,nonatomic) NSString *cm_name;
 
-@property (retain,nonatomic) NSString *mapprop_name;
+@property int cm_ID;
+@property int cm_level;
+@property int cm_totallevels;
+@property float cm_maxzoom;
+@property float cm_minzoom;
+@property int cm_location, cm_startx, cm_starty; // Last Vertex user was at
+
+/**
+ * Load a new map for the view to handle
+ */
+-(BOOL)loadNewMap:(int)mapID withName:(NSString *)mapName;
 
 -(IBAction)click:(id)sender;
 

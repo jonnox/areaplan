@@ -19,6 +19,16 @@ int const MAP_VIEW_ID = 1;
 @synthesize mainViewController,mapViewController;
 @synthesize currentViewID;
 
+/**
+ * Returns the map that is currently loaded
+ */
+-(int)getCurrentMap{
+    if(self.mapViewController == nil)
+        return -1;
+    
+    return self.mapViewController.cm_ID;
+}
+
 -(void)switchToViewByID:(int)viewID{
     UIViewController *currViewCont;
     UIViewController *nextViewCont;
@@ -113,8 +123,17 @@ int const MAP_VIEW_ID = 1;
 /**
  * Load given map and change to that map
  */
--(void)mapSelector:(NSNumber *)mapID{
+-(void)mapSelector:(int)mapID withName:(NSString *)mapName{
+    BOOL changeOK = YES;
+    if(self.mapViewController == nil)
+        self.mapViewController = [[MapViewController alloc] initWithNibName:@"MapView" bundle:nil andWithMasterViewController:self];
+
+    // If it is a different map, load new map
+    if(self.mapViewController.cm_ID != mapID)
+        changeOK = [self.mapViewController loadNewMap:mapID withName:mapName];
     
+    if(changeOK)
+        [self switchToViewByID:MAP_VIEW_ID];
 }
 /**
  * Populate the list of installed maps with their ID's
@@ -139,7 +158,7 @@ int const MAP_VIEW_ID = 1;
         return NO;
     }
     
-    
+    sqlite3_finalize(sqlstmtptr);
     
     return YES;
 }

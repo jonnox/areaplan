@@ -15,7 +15,7 @@
 @property (retain,nonatomic) UIImageView *imageView;
 
 -(void)setImage: (UIImage *) image;
--(void)setImage: (UIImage *) image withZoomMax:(float) maxLimit andZoomMin:(float) minLimit;
+-(void)setImage: (UIImage *) image withZoomMax:(float) maxLimit andZoomMin:(float) minLimit atZoom:(float)zoom;
 
 
 @end

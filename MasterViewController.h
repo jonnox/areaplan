@@ -24,8 +24,10 @@ extern int const MAP_VIEW_ID;
 @property (nonatomic, retain) MainViewController *mainViewController;
 @property (nonatomic, retain) MapViewController *mapViewController;
 
+-(int)getCurrentMap;
+
 -(void)switchToViewByID:(int)viewID;
--(void)mapSelector:(NSNumber *)mapID;
+-(void)mapSelector:(int)mapID withName:(NSString *)mapName;
 -(BOOL)getMapList:(NSMutableArray *)mapIDList withNames:(NSMutableArray *)mapNameList;
 
 @end
