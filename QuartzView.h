@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface QuartzView : UIView
+{
+    NSMutableArray *xCoords;
+    NSMutableArray *yCoords;
+    NSMutableArray *drawType;
+}
+
+@property (retain, nonatomic) NSMutableArray *xCoords, *yCoords, *drawType;
 
 @end

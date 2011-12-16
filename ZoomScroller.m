@@ -12,12 +12,6 @@
 
 @synthesize imageView;
 
-
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
-{
-    return self.imageView;
-}
-
 -(void)setImage: (UIImage *) image{
     if(! self.imageView){
         self.imageView = [[UIImageView alloc] initWithImage:image];

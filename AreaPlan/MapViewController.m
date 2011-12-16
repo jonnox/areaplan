@@ -33,7 +33,110 @@ int const SEL_SETTINGS = 2;
                                                     otherButtonTitles:@"Search",@"Main Menu",@"Settings",nil];
 	[actionSheet showInView:[[self view] window]];
 	actionSheet = nil;
+
 }
+
+
+-(void) clearPoints
+{
+    [[overlay xCoords] removeAllObjects];
+    [[overlay yCoords] removeAllObjects];
+    [[overlay drawType] removeAllObjects];
+}
+
+-(void) addPointX:(int) x Y:(int) y Type:(int) type
+{
+    [[overlay xCoords] addObject:[NSNumber numberWithInt:x]];
+    [[overlay yCoords] addObject:[NSNumber numberWithInt:y]];
+    [[overlay drawType] addObject:[NSNumber numberWithInt:type]];
+}
+
+-(void) addDrawablePonts
+{
+    // Initialization code
+    if(![overlay xCoords])
+    {
+        overlay.xCoords = [[NSMutableArray alloc] init];    
+    }
+    if(![overlay yCoords])
+    {
+        overlay.yCoords = [[NSMutableArray alloc] init];
+    }
+    
+    [self clearPoints];
+    
+    // for each map point
+    
+    
+    // convert to screen coordinates
+    int x = 532;
+    int y = 572;
+    
+    CGPoint offset = zoomScroller.contentOffset;
+    int screenMinX = offset.x / zoomScroller.zoomScale;
+    int screenMinY = offset.y / zoomScroller.zoomScale;
+    int screenMaxX = (offset.x  + zoomScroller.bounds.size.width) / zoomScroller.zoomScale;
+    int screenMaxY = (offset.y + zoomScroller.bounds.size.height) / zoomScroller.zoomScale;
+    
+    
+    CGPoint SMA = CGPointMake(offset.x / zoomScroller.zoomScale,offset.y / zoomScroller.zoomScale);
+    CGPoint SMB = CGPointMake((offset.x  + zoomScroller.bounds.size.width) / zoomScroller.zoomScale,(offset.y + zoomScroller.bounds.size.height) / zoomScroller.zoomScale );
+    
+    CGPoint ep = CGPointMake(SMB.x - SMA.x, SMB.y - SMA.y);
+    CGPoint linearInterp = CGPointMake(zoomScroller.bounds.size.width / ep.x, 
+                                      zoomScroller.bounds.size.height / ep.y);
+    
+    // if currently on screen
+    if(x >= screenMinX && y >= screenMinY && x < screenMaxX && y < screenMaxY)
+    {
+        
+        int ratioX = x - SMA.x;
+        int ratioY = y - SMA.y;
+        
+        int screenX = ratioX * linearInterp.x;
+        int screenY = ratioY * linearInterp.y;
+        
+        NSLog(@"On screen @ (%d,%d)",screenX,screenY);
+        
+        [self addPointX:screenX Y:screenY Type:0];
+    }
+    else
+    {
+        //NSLog(@"Off screen (%f,%f) (%d,%d)");
+    }
+
+    
+    [self.overlay setNeedsDisplay];
+}
+
+//++++++++++++++++++++++++++++++++++++++++++++++
+/**
+ * Scroll view has been changed
+ */
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView{
+    // Todo later if doesn't slow down UI too much
+}
+-(void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if(!decelerate)
+    {
+        [self addDrawablePonts];
+    }
+}
+-(void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self addDrawablePonts];
+}
+
+- (void) scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
+{
+    [self addDrawablePonts];
+}
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
+    return self.zoomScroller.imageView;
+}
+//++++++++++++++++++++++++++++++++++++++++++++++
+
 
 /**
  * Called when the user click the main RIGHT button. Activates
@@ -88,7 +191,9 @@ int const SEL_SETTINGS = 2;
     //NSLog(@"Offset: (%f,%f)",offset.x,offset.y);
     NSLog(@"Offset (zoom): (%f,%f)",offset.x / zoomScroller.zoomScale,offset.y / zoomScroller.zoomScale);
     NSLog(@"Bottom Right: (%f,%f)",(offset.x  + zoomScroller.bounds.size.width) / zoomScroller.zoomScale,(offset.y + zoomScroller.bounds.size.height) / zoomScroller.zoomScale );
+    
 }
+
 
 /**
  * Initializes controller with a link to the program's root view
@@ -144,9 +249,10 @@ int const SEL_SETTINGS = 2;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    UIImage *image = [UIImage imageNamed:@"floorplan.jpg"];
+
+    image = [UIImage imageNamed:@"floorplan.jpg"];
     [self.zoomScroller setImage:image withZoomMax:3.0 andZoomMin:0.5];
+    [self.zoomScroller setDelegate:self];
     
     // Cool reveal animation, complements of jonnox
     [UIView beginAnimations:nil context:NULL];
