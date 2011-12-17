@@ -5,7 +5,7 @@ import sqlite3
 # win = Canvas(master, width=1590, height=844)
 # win.pack()
 
-conn = sqlite3.connect('areaplan.db');
+conn = sqlite3.connect('10000000.db');
 
 curr = conn.cursor()
 
@@ -173,7 +173,7 @@ poi = [
 	[43]
 ),
 (	
-	"Tim Horton's",
+	"Tim Horton''s",
 	5,
 	"UA EA",1,
 	"Hours of operation:\tM-F: 8am - 4pm",
@@ -292,7 +292,7 @@ myid = 0
 for pp in poi:
 	cpx = (pp[5][1][0] + pp[5][0][0]) / 2
 	cpy = (pp[5][2][1] + pp[5][0][1]) / 2
-	curr.execute("""insert into POI values (%d,%d,'%s',%d,'%s',%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d);""" %(myid,pp[1],pp[2],pp[3],pp[4],pp[5][0][0],pp[5][0][1],pp[5][1][0],pp[5][1][1],pp[5][2][0],pp[5][2][1],pp[5][3][0],pp[5][3][1],cpx,cpy,pp[6]))
+	curr.execute("""insert into POI values (%d,%d,'%s','%s',%d,'%s',%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d);""" %(myid,pp[1],pp[0],pp[2],pp[3],pp[4],pp[5][0][0],pp[5][0][1],pp[5][1][0],pp[5][1][1],pp[5][2][0],pp[5][2][1],pp[5][3][0],pp[5][3][1],cpx,cpy,pp[6]))
 	for pvtx in pp[7]:
 		curr.execute("""insert into POI_vertices values (%d,%d);""" %(myid,pvtx))
 	myid += 1
@@ -307,6 +307,8 @@ for e in E:
    for target in e:
       curr.execute("""insert into edges values (%d, %d, %d);""" % (myid, target, 0)) 
       myid += 1
+
+curr.execute("""insert into mapinfo values (4,800,422,1,0.4,1.0,0.6);""")
 
 conn.commit()
 

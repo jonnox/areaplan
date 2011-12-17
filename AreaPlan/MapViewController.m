@@ -192,13 +192,57 @@ BOOL hasLoaded = NO;
  */
 - (IBAction)handleSingleDoubleTap:(UIGestureRecognizer *)sender {
     CGPoint p = [sender locationInView:self.zoomScroller];
+    CGPoint p_on_map = CGPointMake(p.x / zoomScroller.zoomScale,p.y / zoomScroller.zoomScale);
+    /*
     CGPoint offset = zoomScroller.contentOffset;
     //NSLog(@"Location: %f,%f",p.x,p.y);
     NSLog(@"Location (zoom): (%f,%f)",p.x / zoomScroller.zoomScale,p.y / zoomScroller.zoomScale);
     //NSLog(@"Offset: (%f,%f)",offset.x,offset.y);
     NSLog(@"Offset (zoom): (%f,%f)",offset.x / zoomScroller.zoomScale,offset.y / zoomScroller.zoomScale);
     NSLog(@"Bottom Right: (%f,%f)",(offset.x  + zoomScroller.bounds.size.width) / zoomScroller.zoomScale,(offset.y + zoomScroller.bounds.size.height) / zoomScroller.zoomScale );
+     */
     
+    int x0,x1,y0,y1,pts,i;
+    BOOL isIn;
+    pts = 4;
+    
+    //(y - y0) (x1 - x0) - (x - x0) (y1 - y0)
+    sqlite3 *dbptr;
+    sqlite3_stmt *sqlstmtptr;
+    NSString *statement = [[NSString alloc] initWithFormat:@"SELECT * FROM POI WHERE level=%d",cm_level];
+    
+    if(sqlite3_open([[[NSBundle mainBundle] pathForResource:[[NSString alloc] initWithFormat:@"%d",self.cm_ID] ofType:@"db"] UTF8String], &dbptr) == SQLITE_OK){
+        sqlite3_prepare(dbptr, [statement UTF8String], -1, &sqlstmtptr, NULL);
+        while(sqlite3_step(sqlstmtptr) == SQLITE_ROW){
+            isIn = YES;
+            // Perform Point in Polygon test for each point
+            x0 = sqlite3_column_int(sqlstmtptr, (12));
+            y0 = sqlite3_column_int(sqlstmtptr, (13));
+            for(i=0;i<pts;i++){
+                x1 = sqlite3_column_int(sqlstmtptr, (i*2 + 6));
+                y1 = sqlite3_column_int(sqlstmtptr, (i*2 + 7));
+                if(((p_on_map.y - y0)*(x1 - x0) - (p_on_map.x - x0)*(y1 - y0)) < 0){
+                    isIn = NO;
+                    break;
+                }
+                x0 = x1;
+                y0 = y1;
+            }
+            if(isIn){
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[[NSString alloc] initWithFormat:@"%s",sqlite3_column_text(sqlstmtptr, 2)]
+                                    message:[[NSString alloc] initWithFormat:@"%s\n\n(%s)",sqlite3_column_text(sqlstmtptr, 5),sqlite3_column_text(sqlstmtptr, 3)]
+                                    delegate:nil 
+                                    cancelButtonTitle:@"OK"
+                                    otherButtonTitles:nil];
+                [alert show];
+                alert = nil;
+                break;
+            }
+        }
+    }else{
+        NSLog(@"Error: %s",sqlite3_errmsg(dbptr));
+    }
+    sqlite3_finalize(sqlstmtptr);
 }
 
 /**

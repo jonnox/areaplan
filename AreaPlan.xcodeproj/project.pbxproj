@@ -31,9 +31,9 @@
 		FC875D72149AE7ED0026E120 /* restaurant.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D70149AE7ED0026E120 /* restaurant.png */; };
 		FC875D75149BDAA40026E120 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FC875D74149BDAA40026E120 /* libsqlite3.0.dylib */; };
 		FC875D79149BE3D10026E120 /* areaplan.db in Resources */ = {isa = PBXBuildFile; fileRef = FC875D78149BE3D10026E120 /* areaplan.db */; };
-		FC875D7B149BF7360026E120 /* 10000000.db in Resources */ = {isa = PBXBuildFile; fileRef = FC875D7A149BF7360026E120 /* 10000000.db */; };
 		FC875D7E149BFF2F0026E120 /* 10000000_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D7C149BFF2F0026E120 /* 10000000_1.png */; };
 		FC875D7F149BFF2F0026E120 /* 10000000_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D7D149BFF2F0026E120 /* 10000000_2.png */; };
+		FC875D81149C1FD80026E120 /* 10000000.db in Resources */ = {isa = PBXBuildFile; fileRef = FC875D80149C1FD80026E120 /* 10000000.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,9 +71,9 @@
 		FC875D70149AE7ED0026E120 /* restaurant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant.png; sourceTree = "<group>"; };
 		FC875D74149BDAA40026E120 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		FC875D78149BE3D10026E120 /* areaplan.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = areaplan.db; sourceTree = "<group>"; };
-		FC875D7A149BF7360026E120 /* 10000000.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = 10000000.db; sourceTree = "<group>"; };
 		FC875D7C149BFF2F0026E120 /* 10000000_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10000000_1.png; sourceTree = "<group>"; };
 		FC875D7D149BFF2F0026E120 /* 10000000_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10000000_2.png; sourceTree = "<group>"; };
+		FC875D80149C1FD80026E120 /* 10000000.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = 10000000.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,9 +139,9 @@
 		FC02C21D14985FB500605FD4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FC875D80149C1FD80026E120 /* 10000000.db */,
 				FC875D7C149BFF2F0026E120 /* 10000000_1.png */,
 				FC875D7D149BFF2F0026E120 /* 10000000_2.png */,
-				FC875D7A149BF7360026E120 /* 10000000.db */,
 				FC875D78149BE3D10026E120 /* areaplan.db */,
 				FC875D6D149A73D60026E120 /* floorplan.jpg */,
 				FC875D6F149AE7EC0026E120 /* restroom.png */,
@@ -260,9 +260,9 @@
 				FC875D71149AE7ED0026E120 /* restroom.png in Resources */,
 				FC875D72149AE7ED0026E120 /* restaurant.png in Resources */,
 				FC875D79149BE3D10026E120 /* areaplan.db in Resources */,
-				FC875D7B149BF7360026E120 /* 10000000.db in Resources */,
 				FC875D7E149BFF2F0026E120 /* 10000000_1.png in Resources */,
 				FC875D7F149BFF2F0026E120 /* 10000000_2.png in Resources */,
+				FC875D81149C1FD80026E120 /* 10000000.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
