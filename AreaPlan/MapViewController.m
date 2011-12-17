@@ -202,25 +202,25 @@ BOOL hasLoaded = NO;
     NSLog(@"Bottom Right: (%f,%f)",(offset.x  + zoomScroller.bounds.size.width) / zoomScroller.zoomScale,(offset.y + zoomScroller.bounds.size.height) / zoomScroller.zoomScale );
      */
     
-    int x0,x1,y0,y1,pts,i;
+    int x0,x1,y0,y1,pts,i,poiid;
     BOOL isIn;
     pts = 4;
     
     //(y - y0) (x1 - x0) - (x - x0) (y1 - y0)
     sqlite3 *dbptr;
     sqlite3_stmt *sqlstmtptr;
-    NSString *statement = [[NSString alloc] initWithFormat:@"SELECT * FROM POI WHERE level=%d",cm_level];
+    NSString *statement = [[NSString alloc] initWithFormat:@"SELECT p1x,p1y,p2x,p2y,p3x,p3y,p4x,p4y,id FROM POI WHERE level=%d",cm_level];
     
     if(sqlite3_open([[[NSBundle mainBundle] pathForResource:[[NSString alloc] initWithFormat:@"%d",self.cm_ID] ofType:@"db"] UTF8String], &dbptr) == SQLITE_OK){
         sqlite3_prepare(dbptr, [statement UTF8String], -1, &sqlstmtptr, NULL);
         while(sqlite3_step(sqlstmtptr) == SQLITE_ROW){
             isIn = YES;
             // Perform Point in Polygon test for each point
-            x0 = sqlite3_column_int(sqlstmtptr, (12));
-            y0 = sqlite3_column_int(sqlstmtptr, (13));
+            x0 = sqlite3_column_int(sqlstmtptr, (6));
+            y0 = sqlite3_column_int(sqlstmtptr, (7));
             for(i=0;i<pts;i++){
-                x1 = sqlite3_column_int(sqlstmtptr, (i*2 + 6));
-                y1 = sqlite3_column_int(sqlstmtptr, (i*2 + 7));
+                x1 = sqlite3_column_int(sqlstmtptr, (i*2));
+                y1 = sqlite3_column_int(sqlstmtptr, (i*2 + 1));
                 if(((p_on_map.y - y0)*(x1 - x0) - (p_on_map.x - x0)*(y1 - y0)) < 0){
                     isIn = NO;
                     break;
@@ -228,19 +228,29 @@ BOOL hasLoaded = NO;
                 x0 = x1;
                 y0 = y1;
             }
+            poiid = sqlite3_column_int(sqlstmtptr, 8);
+            
             if(isIn){
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[[NSString alloc] initWithFormat:@"%s",sqlite3_column_text(sqlstmtptr, 2)]
-                                    message:[[NSString alloc] initWithFormat:@"%s\n\n(%s)",sqlite3_column_text(sqlstmtptr, 5),sqlite3_column_text(sqlstmtptr, 3)]
-                                    delegate:nil 
-                                    cancelButtonTitle:@"OK"
-                                    otherButtonTitles:nil];
-                [alert show];
-                alert = nil;
                 break;
             }
         }
     }else{
         NSLog(@"Error: %s",sqlite3_errmsg(dbptr));
+    }
+    
+    sqlite3_finalize(sqlstmtptr);
+    
+    if(isIn){
+        statement = [[NSString alloc] initWithFormat:@"SELECT name,info,location FROM POI WHERE id=%d",poiid];sqlite3_prepare(dbptr, [statement UTF8String], -1, &sqlstmtptr, NULL);
+        if(sqlite3_step(sqlstmtptr) == SQLITE_ROW){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[[NSString alloc] initWithFormat:@"%s",sqlite3_column_text(sqlstmtptr, 0)]
+                                                            message:[[NSString alloc] initWithFormat:@"%s\n\n(%s)",sqlite3_column_text(sqlstmtptr, 1),sqlite3_column_text(sqlstmtptr, 2)]
+                                                           delegate:nil 
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            alert = nil;
+        }
     }
     sqlite3_finalize(sqlstmtptr);
 }
