@@ -146,6 +146,12 @@ BOOL hasLoaded = NO;
 {
     [self addDrawablePonts];
 }
+- (void) scrollViewDidZoom:(UIScrollView *)scrollView{
+    [self addDrawablePonts];
+}
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+    [self addDrawablePonts];
+}
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
     return self.zoomScroller.imageView;
 }

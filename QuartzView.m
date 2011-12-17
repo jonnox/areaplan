@@ -47,6 +47,7 @@ NSMutableArray *images;
             [images addObject:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"default_POI_2" ofType:@"png"]]];
     }
     
+    [self setAlpha:0.0];
     for(i = 0; i < [xCoords count]; i++)
     {
         int xPos = [[xCoords objectAtIndex:i] intValue];
@@ -72,6 +73,10 @@ NSMutableArray *images;
         [image drawInRect:CGRectMake(xPos - (width / 2), yPos - (height / 2), width, height)];
 
     }
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1];
+    [self setAlpha:1.0];
+    [UIView commitAnimations];
 }
 
 
