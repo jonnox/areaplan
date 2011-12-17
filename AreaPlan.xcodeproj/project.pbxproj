@@ -34,6 +34,8 @@
 		FC875D7E149BFF2F0026E120 /* 10000000_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D7C149BFF2F0026E120 /* 10000000_1.png */; };
 		FC875D7F149BFF2F0026E120 /* 10000000_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D7D149BFF2F0026E120 /* 10000000_2.png */; };
 		FC875D81149C1FD80026E120 /* 10000000.db in Resources */ = {isa = PBXBuildFile; fileRef = FC875D80149C1FD80026E120 /* 10000000.db */; };
+		FC875D83149C2A3C0026E120 /* default_POI.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D82149C2A3B0026E120 /* default_POI.png */; };
+		FC875D85149C2F630026E120 /* default_POI_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D84149C2F630026E120 /* default_POI_2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		FC875D7C149BFF2F0026E120 /* 10000000_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10000000_1.png; sourceTree = "<group>"; };
 		FC875D7D149BFF2F0026E120 /* 10000000_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10000000_2.png; sourceTree = "<group>"; };
 		FC875D80149C1FD80026E120 /* 10000000.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = 10000000.db; sourceTree = "<group>"; };
+		FC875D82149C2A3B0026E120 /* default_POI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_POI.png; sourceTree = "<group>"; };
+		FC875D84149C2F630026E120 /* default_POI_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_POI_2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,8 @@
 			children = (
 				FC875D80149C1FD80026E120 /* 10000000.db */,
 				FC875D7C149BFF2F0026E120 /* 10000000_1.png */,
+				FC875D82149C2A3B0026E120 /* default_POI.png */,
+				FC875D84149C2F630026E120 /* default_POI_2.png */,
 				FC875D7D149BFF2F0026E120 /* 10000000_2.png */,
 				FC875D78149BE3D10026E120 /* areaplan.db */,
 				FC875D6D149A73D60026E120 /* floorplan.jpg */,
@@ -263,6 +269,8 @@
 				FC875D7E149BFF2F0026E120 /* 10000000_1.png in Resources */,
 				FC875D7F149BFF2F0026E120 /* 10000000_2.png in Resources */,
 				FC875D81149C1FD80026E120 /* 10000000.db in Resources */,
+				FC875D83149C2A3C0026E120 /* default_POI.png in Resources */,
+				FC875D85149C2F630026E120 /* default_POI_2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,8 @@
 
 enum DrawTypes{ RESTROOM=0, STORE=1, OFFICE=2, CLASSROOM=3, SUITE=4, RESTAURANT=5, PUBLIC_AREA=6, LAB=7, TELEPHONE=8, COMPUTER_INTERNET=9, STAIRS=10, ELEVATOR=11 };
 
+NSMutableArray *images;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -27,10 +29,6 @@ enum DrawTypes{ RESTROOM=0, STORE=1, OFFICE=2, CLASSROOM=3, SUITE=4, RESTAURANT=
         NSLog(@"other");
     return self;
 }
-/*
-
-
- */
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -39,61 +37,39 @@ enum DrawTypes{ RESTROOM=0, STORE=1, OFFICE=2, CLASSROOM=3, SUITE=4, RESTAURANT=
     int i;
     UIImage *image; 
     
+    if(images == nil){
+        images = [[NSMutableArray alloc] initWithCapacity:11]; 
+        [images addObject:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"restroom" ofType:@"png"]]];
+        for(i=0;i<4;i++)
+        [images addObject:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"default_POI_2" ofType:@"png"]]];
+        [images addObject:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"restaurant" ofType:@"png"]]];
+        for(i=0;i<4;i++)
+            [images addObject:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"default_POI_2" ofType:@"png"]]];
+    }
+    
     for(i = 0; i < [xCoords count]; i++)
     {
         int xPos = [[xCoords objectAtIndex:i] intValue];
         int yPos = [[yCoords objectAtIndex:i] intValue];
     
         int type = [[drawType objectAtIndex:i] intValue];
-        NSString *imageFilename;
+
         
-        switch(type)
-        {
-            case RESTROOM:
-                imageFilename = [[NSString alloc] initWithFormat:@"restroom"];
-                break;
-            case STORE:
-                
-                break;
-            case OFFICE:
-                
-                break;
-            case CLASSROOM:
-                
-                break;
-            case SUITE:
-                
-                break;
-            case RESTAURANT:
-                imageFilename = [[NSString alloc] initWithFormat:@"restaurant"];
-                break;
-            case PUBLIC_AREA:
-                
-                break;
-            case LAB:
-                
-                break;
-            case TELEPHONE:
-                
-                break;
-            case COMPUTER_INTERNET:
-                
-                break;
-            case STAIRS:
-                
-                break;
-            case ELEVATOR:
-                
-                break;
-            default:
-                imageFilename = [[NSString alloc] initWithFormat:@"left_button"];
+        int width,height,hw,hh;
+        
+        width = 25;
+        height = 25;
+        hw = 12;
+        hh = 12;
+        
+        if(type >= [images count]){
+            NSLog(@"Out of bounds %d (%d)", type,[images count]);
+            image = [images objectAtIndex:0];
+        }else{
+            image = [images objectAtIndex:type];
         }
-        image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imageFilename ofType:@"png"]];
         
-        //NSLog(@"%@", imageFilename);
-        int width = [image size].width;
-        int height = [image size].height;
-        [image drawInRect:CGRectMake(xPos, yPos, width, height)];
+        [image drawInRect:CGRectMake(xPos - (width / 2), yPos - (height / 2), width, height)];
 
     }
 }

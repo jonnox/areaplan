@@ -54,6 +54,10 @@ BOOL hasLoaded = NO;
     [[overlay drawType] addObject:[NSNumber numberWithInt:type]];
 }
 
+/**
+ * Calculates all drawable items for the current view (taking into account zoom)
+ * and passes the info to QuartzView for drawing.
+ */
 -(void) addDrawablePonts
 {
     // Initialization code
@@ -71,11 +75,13 @@ BOOL hasLoaded = NO;
     }
     [self clearPoints];
     
+    sqlite3 *dbptr;
+    sqlite3_stmt *sqlstmtptr;
+    NSString *statement = [[NSString alloc] initWithFormat:@"SELECT type,centerX,centerY,area FROM POI WHERE level=%d",cm_level];
+    
     // for each map location get center point
-    int x = 532;
-    int y = 572;    
-    int z = 1;
-
+    int x,y;
+    
     CGPoint offset = zoomScroller.contentOffset;
     int screenMinX = offset.x / zoomScroller.zoomScale;
     int screenMinY = offset.y / zoomScroller.zoomScale;
@@ -87,20 +93,31 @@ BOOL hasLoaded = NO;
     
     CGPoint ep = CGPointMake(SMB.x - SMA.x, SMB.y - SMA.y);
     CGPoint linearInterp = CGPointMake(zoomScroller.bounds.size.width / ep.x, 
-                                      zoomScroller.bounds.size.height / ep.y);
+                                       zoomScroller.bounds.size.height / ep.y);
     
-    // if currently on screen
-    // need to also check z coordinate against current level
-    if(x >= screenMinX && y >= screenMinY && x < screenMaxX && y < screenMaxY)
-    {
-        int ratioX = x - SMA.x;
-        int ratioY = y - SMA.y;
-        
-        int screenX = ratioX * linearInterp.x;
-        int screenY = ratioY * linearInterp.y;
-        
-        [self addPointX:screenX Y:screenY Type:0];
+    if(sqlite3_open([[[NSBundle mainBundle] pathForResource:[[NSString alloc] initWithFormat:@"%d",self.cm_ID] ofType:@"db"] UTF8String], &dbptr) == SQLITE_OK){
+        sqlite3_prepare(dbptr, [statement UTF8String], -1, &sqlstmtptr, NULL);
+        while(sqlite3_step(sqlstmtptr) == SQLITE_ROW){
+            x = sqlite3_column_int(sqlstmtptr,1);
+            y = sqlite3_column_int(sqlstmtptr,2);
+            // if currently on screen
+            if(x >= screenMinX && y >= screenMinY && x < screenMaxX && y < screenMaxY)
+            {
+                // There is sufficient space to draw
+                if(sqlite3_column_double(sqlstmtptr, 3)*zoomScroller.zoomScale > 2500){
+                    int ratioX = x - SMA.x;
+                    int ratioY = y - SMA.y;
+                    
+                    int screenX = ratioX * linearInterp.x;
+                    int screenY = ratioY * linearInterp.y;
+                    
+                    [self addPointX:screenX Y:screenY Type:sqlite3_column_int(sqlstmtptr,0)];
+                }
+            }
+        }
     }
+    
+    
     
     [self.overlay setNeedsDisplay];
 }
