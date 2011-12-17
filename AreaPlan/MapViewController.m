@@ -22,7 +22,7 @@ BOOL hasLoaded = NO;
 @implementation MapViewController
 
 //MasterViewController to switch between global views
-@synthesize MVC;
+@synthesize MVC,searchView;
 // create getters and setters for the view components
 @synthesize overlay,zoomScroller;
 
@@ -186,24 +186,29 @@ BOOL hasLoaded = NO;
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSLog(@"Selected option: %d",buttonIndex);
     
-    NSMutableArray *p1 = [[NSMutableArray alloc] init];
-    NSMutableArray *p2 = [[NSMutableArray alloc] init];
-    BOOL bl;
-    int i;
-    
     switch (buttonIndex) {
         case SEL_SEARCH:
-            bl = [MVC getMapList:p1 withNames:p2];
-            NSLog(@"getmaplist returned %d",bl);
-            for(i = 0; i < [p1 count]; i++){
-                NSLog(@"%@ - %@",[p1 objectAtIndex:i],[p2 objectAtIndex:i]);
+            if(searchView == nil){
+                searchView = [[SearchViewController alloc] initWithNibName:@"SearchView" bundle:nil];
+                searchView.parentVC = self;
             }
+            
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:1];
+            [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.view cache:YES];
+            
+            [searchView viewWillAppear:YES];
+            [self viewWillDisappear:YES];
+            [self.view addSubview:searchView.view];
+            [self viewDidDisappear:YES];
+            [searchView viewDidAppear:YES];
+            [UIView commitAnimations];
             break;
         
         case SEL_MAIN_MENU:
             [self.MVC switchToViewByID:MAIN_VIEW_ID];
             break;
-            
+        
         default:
             break;
     }
@@ -216,14 +221,6 @@ BOOL hasLoaded = NO;
 - (IBAction)handleSingleDoubleTap:(UIGestureRecognizer *)sender {
     CGPoint p = [sender locationInView:self.zoomScroller];
     CGPoint p_on_map = CGPointMake(p.x / zoomScroller.zoomScale,p.y / zoomScroller.zoomScale);
-    /*
-    CGPoint offset = zoomScroller.contentOffset;
-    //NSLog(@"Location: %f,%f",p.x,p.y);
-    NSLog(@"Location (zoom): (%f,%f)",p.x / zoomScroller.zoomScale,p.y / zoomScroller.zoomScale);
-    //NSLog(@"Offset: (%f,%f)",offset.x,offset.y);
-    NSLog(@"Offset (zoom): (%f,%f)",offset.x / zoomScroller.zoomScale,offset.y / zoomScroller.zoomScale);
-    NSLog(@"Bottom Right: (%f,%f)",(offset.x  + zoomScroller.bounds.size.width) / zoomScroller.zoomScale,(offset.y + zoomScroller.bounds.size.height) / zoomScroller.zoomScale );
-     */
     
     int x0,x1,y0,y1,pts,i,poiid;
     BOOL isIn;
@@ -276,6 +273,29 @@ BOOL hasLoaded = NO;
         }
     }
     sqlite3_finalize(sqlstmtptr);
+}
+
+-(void) goToPoint:(int) poiid{
+    
+    [UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:1];
+    [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self.view cache:YES];
+    
+    [self viewWillAppear:YES];
+    [searchView viewWillDisappear:YES];
+    [searchView.view removeFromSuperview];
+    [searchView viewDidDisappear:YES];
+    [self viewDidAppear:YES];
+    [UIView commitAnimations];
+     
+    
+    //[searchView.view removeFromSuperview];
+    
+    if(poiid >= 0){
+        
+    }else{
+        NSLog(@"WORKED!");
+    }
 }
 
 /**
@@ -343,8 +363,9 @@ BOOL hasLoaded = NO;
     UIButton *btn = (UIButton *)sender;
     if(btn.state == UIControlStateHighlighted)
         leftButtonImage.alpha = 1.0;
-    else
+    else{
         leftButtonImage.alpha = 0.5;
+    }
 }
 
 /*

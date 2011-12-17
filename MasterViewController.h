@@ -13,6 +13,7 @@
 
 extern int const MAIN_VIEW_ID;
 extern int const MAP_VIEW_ID;
+extern int const SEARCH_VIEW_ID;
 
 @interface MasterViewController : UIViewController{
     MainViewController *mainViewController;

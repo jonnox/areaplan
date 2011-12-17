@@ -36,6 +36,8 @@
 		FC875D83149C2A3C0026E120 /* default_POI.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D82149C2A3B0026E120 /* default_POI.png */; };
 		FC875D89149C33270026E120 /* 10000000.db in Resources */ = {isa = PBXBuildFile; fileRef = FC875D88149C33270026E120 /* 10000000.db */; };
 		FC875D8B149C37E50026E120 /* default_POI_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D8A149C37E50026E120 /* default_POI_2.png */; };
+		FC875D8F149C3E210026E120 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC875D8D149C3E210026E120 /* SearchViewController.m */; };
+		FC875D90149C3E210026E120 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC875D8E149C3E210026E120 /* SearchView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,9 @@
 		FC875D82149C2A3B0026E120 /* default_POI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_POI.png; sourceTree = "<group>"; };
 		FC875D88149C33270026E120 /* 10000000.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = 10000000.db; sourceTree = "<group>"; };
 		FC875D8A149C37E50026E120 /* default_POI_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_POI_2.png; sourceTree = "<group>"; };
+		FC875D8C149C3E210026E120 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		FC875D8D149C3E210026E120 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		FC875D8E149C3E210026E120 /* SearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +179,7 @@
 		FC02C2491498F4CC00605FD4 /* ViewNibs */ = {
 			isa = PBXGroup;
 			children = (
+				FC875D8E149C3E210026E120 /* SearchView.xib */,
 				FC02C25614992EB700605FD4 /* MasterNib.xib */,
 				FC02C24D1498F5F000605FD4 /* MapView.xib */,
 				FC02C2351498606C00605FD4 /* MainView.xib */,
@@ -190,6 +196,8 @@
 				FC02C2341498606C00605FD4 /* MainViewController.m */,
 				FC02C2301498601900605FD4 /* MasterViewController.h */,
 				FC02C2311498601900605FD4 /* MasterViewController.m */,
+				FC875D8C149C3E210026E120 /* SearchViewController.h */,
+				FC875D8D149C3E210026E120 /* SearchViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -271,6 +279,7 @@
 				FC875D83149C2A3C0026E120 /* default_POI.png in Resources */,
 				FC875D89149C33270026E120 /* 10000000.db in Resources */,
 				FC875D8B149C37E50026E120 /* default_POI_2.png in Resources */,
+				FC875D90149C3E210026E120 /* SearchView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +298,7 @@
 				FC02C24E1498F5F000605FD4 /* MapViewController.m in Sources */,
 				FC02C26C149A407400605FD4 /* ZoomScroller.m in Sources */,
 				FC875D6C149A62100026E120 /* QuartzView.m in Sources */,
+				FC875D8F149C3E210026E120 /* SearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

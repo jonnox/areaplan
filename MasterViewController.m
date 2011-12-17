@@ -13,6 +13,7 @@
 
 int const MAIN_VIEW_ID = 0;
 int const MAP_VIEW_ID = 1;
+int const SEARCH_VIEW_ID = 2;
 
 @implementation MasterViewController
 

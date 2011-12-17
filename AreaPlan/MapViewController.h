@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ParentViewController.h"
+#import "SearchViewController.h"
 
 @class QuartzView;
 @class ZoomScroller;
@@ -15,6 +16,7 @@
 @interface MapViewController : UIViewController 
         <ParentViewController,UIActionSheetDelegate,UIScrollViewDelegate>{
             MasterViewController *MVC;
+            SearchViewController *searchView;
             IBOutlet QuartzView *overlay;
             IBOutlet ZoomScroller *zoomScroller;
             IBOutlet UIImageView *rightButtonImage;
@@ -26,6 +28,7 @@
 @property (retain,nonatomic) QuartzView *overlay;
 @property (retain,nonatomic) ZoomScroller *zoomScroller;
 @property (retain,nonatomic) NSString *cm_name;
+@property (retain,nonatomic) SearchViewController *searchView;
 
 @property int cm_ID;
 @property int cm_level;
@@ -33,6 +36,8 @@
 @property float cm_maxzoom;
 @property float cm_minzoom;
 @property int cm_location, cm_startx, cm_starty; // Last Vertex user was at
+
+-(void) goToPoint:(int) poiid;
 
 /**
  * Load a new map for the view to handle
@@ -43,6 +48,8 @@
 
 - (IBAction)rightButton:(id)sender;
 - (IBAction)leftButton:(id)sender;
+
+-(IBAction)leftButtonDrag:(id)sender;
 
 - (IBAction)rightButtonInitialPress:(id)sender;
 - (IBAction)leftButtonInitialPress:(id)sender;
