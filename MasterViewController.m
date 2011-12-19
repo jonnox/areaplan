@@ -149,7 +149,7 @@ int const SEARCH_VIEW_ID = 2;
     sqlite3_stmt *sqlstmtptr;
     
     if(sqlite3_open([[[NSBundle mainBundle] pathForResource:@"areaplan" ofType:@"db"] UTF8String], &dbptr) == SQLITE_OK){
-        sqlite3_prepare(dbptr, "SELECT id,name from maps", -1, &sqlstmtptr, NULL);
+        sqlite3_prepare(dbptr, "SELECT id, name from maps", -1, &sqlstmtptr, NULL);
         while(sqlite3_step(sqlstmtptr) == SQLITE_ROW){
             [mapIDList addObject:[NSNumber numberWithInt:sqlite3_column_int(sqlstmtptr, 0)]];
             [mapNameList addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(sqlstmtptr, 1)]];

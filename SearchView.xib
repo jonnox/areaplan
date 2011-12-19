@@ -79,6 +79,7 @@
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIBarStyle">2</int>
 						<array class="NSMutableArray" key="IBUIItems">
 							<object class="IBUIBarButtonItem" id="537833494">
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -97,6 +98,10 @@
 								<int key="IBUISystemItemIdentifier">5</int>
 							</object>
 						</array>
+						<object class="NSColor" key="IBUITintColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
+						</object>
 					</object>
 				</array>
 				<string key="NSFrameSize">{320, 480}</string>

@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation MainViewController
 
@@ -15,9 +16,10 @@
 -(IBAction)click:(id)sender{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Area Plan"
                 message:@"Created by:\nDaniel St. Jacques\nJon Elliott"
-                delegate:nil
+                delegate:self
                 cancelButtonTitle:@"OK"
                 otherButtonTitles:nil];
+
     [alert show];
     alert = nil;
 
@@ -50,6 +52,9 @@
     {
         //UIViewController *c = [[UIViewController alloc] init];
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:Identifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        cell.textColor =[[UIColor alloc] initWithRed:235 green:239 blue:243 alpha:1.0];
+        cell.textLabel.backgroundColor = [UIColor clearColor];
     }
     
     cell.textLabel.text = [mapNames objectAtIndex:[indexPath row]];;
@@ -106,7 +111,9 @@
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
     [self refreshMapList];
-    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"default.png"]];
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bkgrnd.png"]];
+    self.tableView.backgroundColor =[[UIColor alloc] initWithRed:70 green:77 blue:83 alpha:0.3];
+    [self.tableView.layer setCornerRadius:10.0];
 }
 
 - (void)viewDidUnload

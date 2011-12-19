@@ -73,6 +73,12 @@ NSMutableArray *images;
         [image drawInRect:CGRectMake(xPos - (width / 2), yPos - (height / 2), width, height)];
 
     }
+    
+    // Draw highlighted section
+    if([[highlight objectAtIndex:0] floatValue] >= 0.0){
+        
+    }
+    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:1];
     [self setAlpha:1.0];

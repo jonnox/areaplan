@@ -12,11 +12,14 @@
 {
     NSMutableArray *xCoords;
     NSMutableArray *yCoords;
+    NSMutableArray *highlight;
     NSMutableArray *drawType;
     UIImage *img_restroom;
     UIImage *img_restaurant;
 }
 
 @property (retain, nonatomic) NSMutableArray *xCoords, *yCoords, *drawType;
+
+@property (retain, nonatomic) NSMutableArray *highlight;
 
 @end
