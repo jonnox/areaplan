@@ -9,10 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "ParentViewController.h"
 
-@interface MainViewController : UIViewController <ParentViewController>{
+@interface MainViewController : UIViewController <ParentViewController, UITableViewDelegate,UITableViewDataSource>{
     MasterViewController *MVC;
+    UITableView *tableView;
+    NSMutableArray *mapNames;
+    NSMutableArray *mapIDs;
 }
 
+@property (retain,nonatomic) IBOutlet UITableView *tableView;
+
 -(IBAction)click:(id)sender;
+-(void)refreshMapList;
 
 @end

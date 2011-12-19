@@ -215,6 +215,13 @@ BOOL hasLoaded = NO;
 }
 
 /**
+ * Adjust map so given POI is in view
+ */
+-(BOOL)goToPOI:(int)poiID{
+    return YES;
+}
+
+/**
  * Executed when a user taps on the map at a given point. Accounts
  * for pan and zoom of image.
  */
@@ -264,10 +271,10 @@ BOOL hasLoaded = NO;
         statement = [[NSString alloc] initWithFormat:@"SELECT name,info,location FROM POI WHERE id=%d",poiid];sqlite3_prepare(dbptr, [statement UTF8String], -1, &sqlstmtptr, NULL);
         if(sqlite3_step(sqlstmtptr) == SQLITE_ROW){
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[[NSString alloc] initWithFormat:@"%s",sqlite3_column_text(sqlstmtptr, 0)]
-                                                            message:[[NSString alloc] initWithFormat:@"%s\n\n(%s)",sqlite3_column_text(sqlstmtptr, 1),sqlite3_column_text(sqlstmtptr, 2)]
-                                                           delegate:nil 
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+                        message:[[NSString alloc] initWithFormat:@"%s\n\n(%s)",sqlite3_column_text(sqlstmtptr, 1),sqlite3_column_text(sqlstmtptr, 2)]
+                        delegate:nil 
+                        cancelButtonTitle:@"OK"
+                        otherButtonTitles:nil];
             [alert show];
             alert = nil;
         }
@@ -308,8 +315,10 @@ BOOL hasLoaded = NO;
     if(hasLoaded == YES){
         sqlite3 *dbptr;
         sqlite3_stmt *sqlstmtptr;
+        
+        NSString *pth = [[NSString alloc] initWithFormat:@"%d",self.cm_ID];
     
-        if(sqlite3_open([[[NSBundle mainBundle] pathForResource:[[NSString alloc] initWithFormat:@"%d",self.cm_ID] ofType:@"db"] UTF8String], &dbptr) == SQLITE_OK){
+        if(sqlite3_open([[[NSBundle mainBundle] pathForResource:pth ofType:@"db"] UTF8String], &dbptr) == SQLITE_OK){
             sqlite3_prepare(dbptr, "SELECT * from mapinfo", -1, &sqlstmtptr, NULL);
             if(sqlite3_step(sqlstmtptr) == SQLITE_ROW){
                 // Get number of leves

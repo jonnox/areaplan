@@ -43,6 +43,7 @@
  * Load a new map for the view to handle
  */
 -(BOOL)loadNewMap:(int)mapID withName:(NSString *)mapName;
+-(BOOL)goToPOI:(int)poiID;
 
 -(IBAction)click:(id)sender;
 
