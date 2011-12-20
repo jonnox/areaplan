@@ -18,6 +18,9 @@ int const SEL_MAIN_MENU = 1;
 int const SEL_SETTINGS = 2;
 
 BOOL hasLoaded = NO;
+BOOL isHighlighted = NO;
+
+float ptstohighlight[8] = {-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0};
 
 @implementation MapViewController
 
@@ -104,9 +107,24 @@ BOOL hasLoaded = NO;
                 }
             }
         }
+        
+        if(isHighlighted){
+            float tmpfpt[8] = {
+                (ptstohighlight[0] * self.zoomScroller.zoomScale) - self.zoomScroller.contentOffset.x,
+                (ptstohighlight[1] * self.zoomScroller.zoomScale) - self.zoomScroller.contentOffset.y,
+                (ptstohighlight[2] * self.zoomScroller.zoomScale) - self.zoomScroller.contentOffset.x,
+                (ptstohighlight[3] * self.zoomScroller.zoomScale) - self.zoomScroller.contentOffset.y,
+                (ptstohighlight[4] * self.zoomScroller.zoomScale) - self.zoomScroller.contentOffset.x,
+                (ptstohighlight[5] * self.zoomScroller.zoomScale) - self.zoomScroller.contentOffset.y,
+                (ptstohighlight[6] * self.zoomScroller.zoomScale) - self.zoomScroller.contentOffset.x,
+                (ptstohighlight[7] * self.zoomScroller.zoomScale) - self.zoomScroller.contentOffset.y
+            };
+            
+            [self.overlay setPoints:tmpfpt];
+            //free(tmpfpt);
+        }
+         
     }
-    
-    
     
     [self.overlay setNeedsDisplay];
 }
@@ -156,7 +174,7 @@ BOOL hasLoaded = NO;
             delegate:self
             cancelButtonTitle:@"Cancel"
             destructiveButtonTitle:nil
-            otherButtonTitles:@"Search",@"Main Menu",@"Settings",nil];
+            otherButtonTitles:@"Search",@"Main Menu",nil];
 	[actionSheet showInView:[[self view] window]];
 	actionSheet = nil;
     rightButtonImage.alpha = 0.5;
@@ -210,6 +228,10 @@ BOOL hasLoaded = NO;
 - (IBAction)handleSingleDoubleTap:(UIGestureRecognizer *)sender {
     CGPoint p = [sender locationInView:self.zoomScroller];
     CGPoint p_on_map = CGPointMake(p.x / zoomScroller.zoomScale,p.y / zoomScroller.zoomScale);
+    
+    isHighlighted = NO;
+    [self.overlay clearHArray];
+    [self.overlay setNeedsDisplay];
     
     int x0,x1,y0,y1,pts,i,poiid;
     BOOL isIn;
@@ -281,14 +303,14 @@ BOOL hasLoaded = NO;
     //float = [sender locationInView:self.zoomScroller];
    // CGPoint p_on_map = CGPointMake(p.x / zoomScroller.zoomScale,p.y / zoomScroller.zoomScale);
     
-    int x0,y0,xf,yf,level;
+    int x0,y0,xf,yf,level,i;
     float area,zArea;
     float newScale = zoomScroller.zoomScale;
     
     //(y - y0) (x1 - x0) - (x - x0) (y1 - y0)
     sqlite3 *dbptr;
     sqlite3_stmt *sqlstmtptr;
-    NSString *statement = [[NSString alloc] initWithFormat:@"SELECT centerX,centerY,area,level FROM POI WHERE id=%d", poiid];
+    NSString *statement = [[NSString alloc] initWithFormat:@"SELECT centerX,centerY,area,level,p1x,p1y,p2x,p2y,p3x,p3y,p4x,p4y FROM POI WHERE id=%d", poiid];
     
     if(sqlite3_open([[[NSBundle mainBundle] pathForResource:[[NSString alloc] initWithFormat:@"%d",self.cm_ID] ofType:@"db"] UTF8String], &dbptr) == SQLITE_OK){
         sqlite3_prepare(dbptr, [statement UTF8String], -1, &sqlstmtptr, NULL);
@@ -321,6 +343,28 @@ BOOL hasLoaded = NO;
             
                 [self.zoomScroller setContentOffset:CGPointMake(xf, yf) animated:YES];
                 
+                
+                for(i=0;i<8;i++){
+                    ptstohighlight[i] = sqlite3_column_int(sqlstmtptr, (i + 4));
+                }
+                
+                
+                float tmpfpt[8] = {
+                    (ptstohighlight[0] * self.zoomScroller.zoomScale) - self.zoomScroller.contentOffset.x,
+                    (ptstohighlight[1] * self.zoomScroller.zoomScale) - self.zoomScroller.contentOffset.y,
+                    (ptstohighlight[2] * self.zoomScroller.zoomScale) - self.zoomScroller.contentOffset.x,
+                    (ptstohighlight[3] * self.zoomScroller.zoomScale) - self.zoomScroller.contentOffset.y,
+                    (ptstohighlight[4] * self.zoomScroller.zoomScale) - self.zoomScroller.contentOffset.x,
+                    (ptstohighlight[5] * self.zoomScroller.zoomScale) - self.zoomScroller.contentOffset.y,
+                    (ptstohighlight[6] * self.zoomScroller.zoomScale) - self.zoomScroller.contentOffset.x,
+                    (ptstohighlight[7] * self.zoomScroller.zoomScale) - self.zoomScroller.contentOffset.y
+                };
+                
+                [self.overlay setPoints:tmpfpt];
+                //free(tmpfpt);
+                isHighlighted = YES;
+                
+                
                 [self.overlay setNeedsDisplay];
             }
         }
@@ -329,6 +373,7 @@ BOOL hasLoaded = NO;
     }
     
     sqlite3_finalize(sqlstmtptr);
+
 }
 
 -(BOOL)changeLevel:(int)level{
@@ -386,6 +431,11 @@ BOOL hasLoaded = NO;
     if (self) {
         self.MVC = mvc;
         cm_name = @"";
+        int i;
+        [self.overlay initArray];
+        for (i=0; i<8; i++) {
+            [self.overlay.highlight addObject:[[NSNumber alloc]initWithFloat:-1.0]];
+        }
     }
     return self;
 }
@@ -411,8 +461,7 @@ BOOL hasLoaded = NO;
     sqlite3 *dbptr;
     int i;
     sqlite3_stmt *sqlstmtptr;
-    float *pts = (float *)malloc(sizeof(float) * 8);
-    NSMutableArray *hlights = self.overlay.highlight;
+    
     
     NSString *statement = [[NSString alloc] initWithFormat:@"SELECT  p1x,p1y,p2x,p2y,p3x,p3y,p4x,p4y FROM POI WHERE id=%d", poiid];
     
@@ -421,23 +470,16 @@ BOOL hasLoaded = NO;
         if(sqlite3_step(sqlstmtptr) == SQLITE_ROW){
             
             for(i=0;i<8;i++){
-                pts[i] = sqlite3_column_double(sqlstmtptr, i);
+                ptstohighlight[i] = sqlite3_column_double(sqlstmtptr, i);
             }
-            
-            [hlights replaceObjectAtIndex:0 withObject:
-             [[NSNumber alloc] initWithFloat:sqlite3_column_double(sqlstmtptr, 0)]];
-            hlights
-            hlights
-            hlights
-            x0 = sqlite3_column_int(sqlstmtptr, (0));
-            y0 = sqlite3_column_int(sqlstmtptr, (1));
-            area = sqlite3_column_double(sqlstmtptr, 2);
-            level = sqlite3_column_int(sqlstmtptr, (3));
+
+            [self.overlay setPoints:ptstohighlight];
         }
     }
 }
 -(void)clearHighlight{
-    [self.overlay.highlight replaceObjectAtIndex:0 withObject:  [[NSNumber alloc]initWithFloat:-1.0]];
+    [self.overlay clearHArray];
+    isHighlighted = NO;
 }
 
 /*
@@ -464,8 +506,6 @@ BOOL hasLoaded = NO;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.overlay.highlight = [[NSMutableArray alloc] initWithCapacity:9];
     
     hasLoaded = YES;
     

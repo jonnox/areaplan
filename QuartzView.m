@@ -10,11 +10,33 @@
 
 @implementation QuartzView
 
-@synthesize xCoords, yCoords, drawType;
+@synthesize xCoords, yCoords, drawType,highlight,isHighlighted;
 
 enum DrawTypes{ RESTROOM=0, STORE=1, OFFICE=2, CLASSROOM=3, SUITE=4, RESTAURANT=5, PUBLIC_AREA=6, LAB=7, TELEPHONE=8, COMPUTER_INTERNET=9, STAIRS=10, ELEVATOR=11 };
 
 NSMutableArray *images;
+
+float hpts[8] = {-1,-1,-1,-1,-1,-1,-1,-1};
+
+-(void) initArray{
+    self.highlight = [NSMutableArray alloc];
+}
+-(void) setPoints:(float [])pts{
+    int i;
+    for(i=0;i<8;i++){
+        hpts[i] = pts[i];
+    }
+    /*NSLog(@"Adding points:\n\n(%.2f,%.2f) (%.2f,%.2f)\n(%.2f,%.2f) (%.2f,%.2f)\n(%.2f,%.2f) (%.2f,%.2f)\n(%.2f,%.2f) (%.2f,%.2f)",
+          hpts[0],hpts[1],pts[0],pts[1],
+          hpts[2],hpts[3],pts[2],pts[3],
+          hpts[4],hpts[5],pts[4],pts[5],
+          hpts[6],hpts[7],pts[6],pts[7]);
+     */
+    isHighlighted = YES;
+}
+-(void) clearHArray{
+    isHighlighted = NO;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -26,7 +48,7 @@ NSMutableArray *images;
 }
 - (id)init
 {
-        NSLog(@"other");
+    self = [super init];
     return self;
 }
 
@@ -75,9 +97,44 @@ NSMutableArray *images;
     }
     
     // Draw highlighted section
-    if([[highlight objectAtIndex:0] floatValue] >= 0.0){
+    
+    if(isHighlighted){
+        // set line width 
         
+        // Drawing code. 
+        
+        // get the drawing canvas (CGContext): 
+        
+        CGContextRef context = UIGraphicsGetCurrentContext(); 
+        
+        // save the context’s previous state: 
+        
+        CGContextSaveGState(context); 
+        
+        // our custom drawing code will go here: 
+        
+        
+        
+        CGContextSetLineWidth(context, 5); 
+        
+        // set the colour when drawing lines R,G,B,A 
+        
+        CGContextSetRGBStrokeColor(context, 0,0.5,0.8,0.5);
+        
+        CGContextMoveToPoint(context, hpts[0],hpts[1]);
+
+        for(i=2; i < 8; i = i + 2){
+            CGContextAddLineToPoint(context, hpts[i], hpts[i+1]);
+        }
+        CGContextAddLineToPoint(context, hpts[0], hpts[1]);
+        
+        CGContextStrokePath(context);
+        
+        // restore the context’s state when we are done with it: 
+        
+        CGContextRestoreGState(context); 
     }
+     
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:1];

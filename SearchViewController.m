@@ -95,7 +95,7 @@
     const char* query = [[[NSString alloc] initWithFormat:@" %@",searchText] UTF8String];
     int i;
     BOOL isNull = NO;
-    if(strlen(query) > 0){
+    if(strlen(query) > 1){
         for(i = 0; i < [POI count]; i++)
         {
             const char* name = [[[NSString alloc] initWithFormat:@" %@",[[POI objectAtIndex:i] objectAtIndex:1] ] UTF8String];
@@ -141,10 +141,17 @@
             double rank = [[[POI objectAtIndex:i] objectAtIndex:3] doubleValue];
             if(rank > 0.4)
                 [displayList addObject:[[NSNumber alloc] initWithInt:i]];
-            NSLog(@"%@ - %f",
-                  [[POI objectAtIndex:i] objectAtIndex:1],rank);
+
         }
     }else{
+        // Sort by ranks
+        POI = [POI sortedArrayUsingComparator:^(id a, id b)
+               {
+                   NSString *one = [(NSArray*)a objectAtIndex:1];
+                   NSString *two = [(NSArray*)b objectAtIndex:1];
+                   
+                   return [one compare:two];
+               }];
         for(i = 0; i < [POI count]; i++)
         {
             [displayList addObject:[[NSNumber alloc] initWithInt:i]];
@@ -245,6 +252,7 @@
 
 - (void)viewDidLoad
 {
+    int i;
     [super viewDidLoad];
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
@@ -254,6 +262,14 @@
     
 
     // Do any additional setup after loading the view from its nib.
+    // Sort by ranks
+    POI = [POI sortedArrayUsingComparator:^(id a, id b)
+           {
+               NSString *one = [(NSArray*)a objectAtIndex:1];
+               NSString *two = [(NSArray*)b objectAtIndex:1];
+               
+               return [one compare:two];
+           }];
 }
 
 - (void)viewDidUnload

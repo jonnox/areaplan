@@ -18,7 +18,13 @@
     UIImage *img_restaurant;
 }
 
+-(void) initArray;
+-(void) setPoints:(float[])pts;
+-(void) clearHArray;
+
 @property (retain, nonatomic) NSMutableArray *xCoords, *yCoords, *drawType;
+
+@property BOOL isHighlighted;
 
 @property (retain, nonatomic) NSMutableArray *highlight;
 
