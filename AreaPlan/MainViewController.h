@@ -14,6 +14,7 @@
     UITableView *tableView;
     NSMutableArray *mapNames;
     NSMutableArray *mapIDs;
+    NSMutableArray *mapIcons;
 }
 
 @property (retain,nonatomic) IBOutlet UITableView *tableView;

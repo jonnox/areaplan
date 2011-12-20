@@ -277,8 +277,8 @@ float ptstohighlight[8] = {-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0};
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[[NSString alloc] initWithFormat:@"%s",sqlite3_column_text(sqlstmtptr, 0)]
                         message:[[NSString alloc] initWithFormat:@"%s\n\n(%s)",sqlite3_column_text(sqlstmtptr, 1),sqlite3_column_text(sqlstmtptr, 2)]
                         delegate:nil 
-                        cancelButtonTitle:@"OK"
-                        otherButtonTitles:nil];
+                        cancelButtonTitle:@"Back to map"
+                        otherButtonTitles:@"Mark as starting location", @"Mark as destination", nil];
             [alert show];
             alert = nil;
         }

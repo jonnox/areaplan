@@ -13,6 +13,8 @@
 
 @synthesize MVC, tableView;
 
+UIImage *mapicon;
+
 -(IBAction)click:(id)sender{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Area Plan"
                 message:@"Created by:\nDaniel St. Jacques\nJon Elliott"
@@ -57,8 +59,8 @@
         cell.textLabel.backgroundColor = [UIColor clearColor];
     }
     
-    cell.textLabel.text = [mapNames objectAtIndex:[indexPath row]];;
-    
+    cell.textLabel.text = [mapNames objectAtIndex:[indexPath row]];
+    cell.imageView.image = [mapIcons objectAtIndex:[indexPath row]];
     return cell;
 
 }
@@ -71,8 +73,10 @@
         mapIDs = [[NSMutableArray alloc] init];
     if(mapNames == nil)
         mapNames = [[NSMutableArray alloc] init];
+    if(mapIcons == nil)
+        mapIcons = [[NSMutableArray alloc] init];
     
-    [self.MVC getMapList:mapIDs withNames:mapNames];
+    [self.MVC getMapList:mapIDs withNames:mapNames andIcons:mapIcons];
 }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -81,6 +85,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.MVC = mvc;
+        mapicon = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mp_ico" ofType:@"png"]];
     }
     return self;
 }
