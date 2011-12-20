@@ -21,7 +21,6 @@
 		FC02C24E1498F5F000605FD4 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC02C24C1498F5F000605FD4 /* MapViewController.m */; };
 		FC02C24F1498F5F000605FD4 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC02C24D1498F5F000605FD4 /* MapView.xib */; };
 		FC02C25814992EB700605FD4 /* MasterNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC02C25614992EB700605FD4 /* MasterNib.xib */; };
-		FC02C25A14993A6A00605FD4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FC02C25914993A6A00605FD4 /* icon.png */; };
 		FC02C267149A3FF200605FD4 /* right_button.png in Resources */ = {isa = PBXBuildFile; fileRef = FC02C265149A3FF200605FD4 /* right_button.png */; };
 		FC02C268149A3FF200605FD4 /* left_button.png in Resources */ = {isa = PBXBuildFile; fileRef = FC02C266149A3FF200605FD4 /* left_button.png */; };
 		FC02C26C149A407400605FD4 /* ZoomScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = FC02C26B149A407400605FD4 /* ZoomScroller.m */; };
@@ -30,16 +29,16 @@
 		FC875D71149AE7ED0026E120 /* restroom.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D6F149AE7EC0026E120 /* restroom.png */; };
 		FC875D72149AE7ED0026E120 /* restaurant.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D70149AE7ED0026E120 /* restaurant.png */; };
 		FC875D75149BDAA40026E120 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FC875D74149BDAA40026E120 /* libsqlite3.0.dylib */; };
-		FC875D79149BE3D10026E120 /* areaplan.db in Resources */ = {isa = PBXBuildFile; fileRef = FC875D78149BE3D10026E120 /* areaplan.db */; };
 		FC875D7E149BFF2F0026E120 /* 10000000_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D7C149BFF2F0026E120 /* 10000000_1.png */; };
 		FC875D7F149BFF2F0026E120 /* 10000000_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D7D149BFF2F0026E120 /* 10000000_2.png */; };
-		FC875D83149C2A3C0026E120 /* default_POI.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D82149C2A3B0026E120 /* default_POI.png */; };
 		FC875D89149C33270026E120 /* 10000000.db in Resources */ = {isa = PBXBuildFile; fileRef = FC875D88149C33270026E120 /* 10000000.db */; };
 		FC875D8B149C37E50026E120 /* default_POI_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D8A149C37E50026E120 /* default_POI_2.png */; };
 		FC875D8F149C3E210026E120 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC875D8D149C3E210026E120 /* SearchViewController.m */; };
 		FC875D90149C3E210026E120 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC875D8E149C3E210026E120 /* SearchView.xib */; };
 		FC875D96149FB96E0026E120 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D95149FB96E0026E120 /* default.png */; };
 		FC875D98149FCCE10026E120 /* bkgrnd.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D97149FCCE10026E120 /* bkgrnd.png */; };
+		FC875DAC14A131790026E120 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875DAB14A131790026E120 /* icon.png */; };
+		FC875DAE14A1328F0026E120 /* areaplan.db in Resources */ = {isa = PBXBuildFile; fileRef = FC875DAD14A1328F0026E120 /* areaplan.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,7 +64,6 @@
 		FC02C24C1498F5F000605FD4 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = AreaPlan/MapViewController.m; sourceTree = "<group>"; };
 		FC02C24D1498F5F000605FD4 /* MapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapView.xib; path = AreaPlan/MapView.xib; sourceTree = "<group>"; };
 		FC02C25614992EB700605FD4 /* MasterNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterNib.xib; sourceTree = "<group>"; };
-		FC02C25914993A6A00605FD4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		FC02C265149A3FF200605FD4 /* right_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_button.png; sourceTree = "<group>"; };
 		FC02C266149A3FF200605FD4 /* left_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_button.png; sourceTree = "<group>"; };
 		FC02C26A149A407400605FD4 /* ZoomScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomScroller.h; sourceTree = "<group>"; };
@@ -76,10 +74,8 @@
 		FC875D6F149AE7EC0026E120 /* restroom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restroom.png; sourceTree = "<group>"; };
 		FC875D70149AE7ED0026E120 /* restaurant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant.png; sourceTree = "<group>"; };
 		FC875D74149BDAA40026E120 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		FC875D78149BE3D10026E120 /* areaplan.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = areaplan.db; sourceTree = "<group>"; };
 		FC875D7C149BFF2F0026E120 /* 10000000_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10000000_1.png; sourceTree = "<group>"; };
 		FC875D7D149BFF2F0026E120 /* 10000000_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10000000_2.png; sourceTree = "<group>"; };
-		FC875D82149C2A3B0026E120 /* default_POI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_POI.png; sourceTree = "<group>"; };
 		FC875D88149C33270026E120 /* 10000000.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = 10000000.db; sourceTree = "<group>"; };
 		FC875D8A149C37E50026E120 /* default_POI_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_POI_2.png; sourceTree = "<group>"; };
 		FC875D8C149C3E210026E120 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
@@ -87,6 +83,8 @@
 		FC875D8E149C3E210026E120 /* SearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		FC875D95149FB96E0026E120 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
 		FC875D97149FCCE10026E120 /* bkgrnd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bkgrnd.png; sourceTree = "<group>"; };
+		FC875DAB14A131790026E120 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		FC875DAD14A1328F0026E120 /* areaplan.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = areaplan.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,17 +153,16 @@
 				FC875D97149FCCE10026E120 /* bkgrnd.png */,
 				FC875D95149FB96E0026E120 /* default.png */,
 				FC875D7C149BFF2F0026E120 /* 10000000_1.png */,
-				FC875D82149C2A3B0026E120 /* default_POI.png */,
+				FC875DAD14A1328F0026E120 /* areaplan.db */,
 				FC875D88149C33270026E120 /* 10000000.db */,
 				FC875D7D149BFF2F0026E120 /* 10000000_2.png */,
+				FC875DAB14A131790026E120 /* icon.png */,
 				FC875D8A149C37E50026E120 /* default_POI_2.png */,
-				FC875D78149BE3D10026E120 /* areaplan.db */,
 				FC875D6D149A73D60026E120 /* floorplan.jpg */,
 				FC875D6F149AE7EC0026E120 /* restroom.png */,
 				FC875D70149AE7ED0026E120 /* restaurant.png */,
 				FC02C266149A3FF200605FD4 /* left_button.png */,
 				FC02C265149A3FF200605FD4 /* right_button.png */,
-				FC02C25914993A6A00605FD4 /* icon.png */,
 				FC02C21E14985FB500605FD4 /* AreaPlan-Info.plist */,
 				FC02C21F14985FB500605FD4 /* InfoPlist.strings */,
 				FC02C22214985FB500605FD4 /* main.m */,
@@ -273,21 +270,20 @@
 				FC02C2371498606C00605FD4 /* MainView.xib in Resources */,
 				FC02C24F1498F5F000605FD4 /* MapView.xib in Resources */,
 				FC02C25814992EB700605FD4 /* MasterNib.xib in Resources */,
-				FC02C25A14993A6A00605FD4 /* icon.png in Resources */,
 				FC02C267149A3FF200605FD4 /* right_button.png in Resources */,
 				FC02C268149A3FF200605FD4 /* left_button.png in Resources */,
 				FC875D6E149A73D60026E120 /* floorplan.jpg in Resources */,
 				FC875D71149AE7ED0026E120 /* restroom.png in Resources */,
 				FC875D72149AE7ED0026E120 /* restaurant.png in Resources */,
-				FC875D79149BE3D10026E120 /* areaplan.db in Resources */,
 				FC875D7E149BFF2F0026E120 /* 10000000_1.png in Resources */,
 				FC875D7F149BFF2F0026E120 /* 10000000_2.png in Resources */,
-				FC875D83149C2A3C0026E120 /* default_POI.png in Resources */,
 				FC875D89149C33270026E120 /* 10000000.db in Resources */,
 				FC875D8B149C37E50026E120 /* default_POI_2.png in Resources */,
 				FC875D90149C3E210026E120 /* SearchView.xib in Resources */,
 				FC875D96149FB96E0026E120 /* default.png in Resources */,
 				FC875D98149FCCE10026E120 /* bkgrnd.png in Resources */,
+				FC875DAC14A131790026E120 /* icon.png in Resources */,
+				FC875DAE14A1328F0026E120 /* areaplan.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,7 +371,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AreaPlan/AreaPlan-Prefix.pch";
 				INFOPLIST_FILE = "AreaPlan/AreaPlan-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -386,7 +384,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AreaPlan/AreaPlan-Prefix.pch";
 				INFOPLIST_FILE = "AreaPlan/AreaPlan-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

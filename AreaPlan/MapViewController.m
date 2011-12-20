@@ -383,7 +383,7 @@ float ptstohighlight[8] = {-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0};
 /**
  * Load a new map for the view to handle
  */
--(BOOL)loadNewMap:(int)mapID withName:(NSString *)mapName{
+-(BOOL)loadNewMap:(int)mapID withName:(NSString *)mapName {
     self.cm_ID = mapID;
     self.cm_name = mapName;
     

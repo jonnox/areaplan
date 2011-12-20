@@ -139,7 +139,7 @@ int const SEARCH_VIEW_ID = 2;
 /**
  * Populate the list of installed maps with their ID's
  */
--(BOOL)getMapList:(NSMutableArray *)mapIDList withNames:(NSMutableArray *)mapNameList{
+-(BOOL)getMapList:(NSMutableArray *)mapIDList withNames:(NSMutableArray *)mapNameList andIcons:(NSMutableArray*)mapIconList{
     
     // Both need to be initialized outside of this function call
     if(mapIDList == nil || mapNameList == nil)
@@ -149,10 +149,12 @@ int const SEARCH_VIEW_ID = 2;
     sqlite3_stmt *sqlstmtptr;
     
     if(sqlite3_open([[[NSBundle mainBundle] pathForResource:@"areaplan" ofType:@"db"] UTF8String], &dbptr) == SQLITE_OK){
-        sqlite3_prepare(dbptr, "SELECT id, name from maps", -1, &sqlstmtptr, NULL);
+        sqlite3_prepare(dbptr, "SELECT id, name, icon from maps", -1, &sqlstmtptr, NULL);
         while(sqlite3_step(sqlstmtptr) == SQLITE_ROW){
             [mapIDList addObject:[NSNumber numberWithInt:sqlite3_column_int(sqlstmtptr, 0)]];
             [mapNameList addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(sqlstmtptr, 1)]];
+            NSData *data = [[NSData alloc] initWithBytes:sqlite3_column_blob(sqlstmtptr, 2) length:sqlite3_column_bytes(sqlstmtptr, 2)];
+            [mapIconList addObject:[[UIImage alloc] initWithData:data]];
         }
     }else{
         NSLog(@"Error: %s",sqlite3_errmsg(dbptr));

@@ -29,6 +29,6 @@ extern int const SEARCH_VIEW_ID;
 
 -(void)switchToViewByID:(int)viewID;
 -(void)mapSelector:(int)mapID withName:(NSString *)mapName;
--(BOOL)getMapList:(NSMutableArray *)mapIDList withNames:(NSMutableArray *)mapNameList;
+-(BOOL)getMapList:(NSMutableArray *)mapIDList withNames:(NSMutableArray *)mapNameList andIcons:(NSMutableArray*)mapIconList;
 
 @end
