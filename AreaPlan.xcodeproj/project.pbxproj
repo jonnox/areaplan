@@ -38,7 +38,14 @@
 		FC875D96149FB96E0026E120 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D95149FB96E0026E120 /* default.png */; };
 		FC875D98149FCCE10026E120 /* bkgrnd.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D97149FCCE10026E120 /* bkgrnd.png */; };
 		FC875DAC14A131790026E120 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875DAB14A131790026E120 /* icon.png */; };
-		FC875DAE14A1328F0026E120 /* areaplan.db in Resources */ = {isa = PBXBuildFile; fileRef = FC875DAD14A1328F0026E120 /* areaplan.db */; };
+		FC875DBA14A133440026E120 /* Edge.m in Sources */ = {isa = PBXBuildFile; fileRef = FC875DB214A133430026E120 /* Edge.m */; };
+		FC875DBB14A133440026E120 /* Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = FC875DB414A133430026E120 /* Graph.m */; };
+		FC875DBC14A133440026E120 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC875DB514A133430026E120 /* main.m */; };
+		FC875DBE14A133440026E120 /* Vertex.m in Sources */ = {isa = PBXBuildFile; fileRef = FC875DB814A133430026E120 /* Vertex.m */; };
+		FC875DC014A13E180026E120 /* maplogo.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875DBF14A13E160026E120 /* maplogo.png */; };
+		FC875DC214A146180026E120 /* 10000001_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875DC114A146170026E120 /* 10000001_1.png */; };
+		FC875DC414A146220026E120 /* 10000001.db in Resources */ = {isa = PBXBuildFile; fileRef = FC875DC314A146210026E120 /* 10000001.db */; };
+		FC875DC614A1463D0026E120 /* areaplan.db in Resources */ = {isa = PBXBuildFile; fileRef = FC875DC514A1463C0026E120 /* areaplan.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,7 +91,17 @@
 		FC875D95149FB96E0026E120 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
 		FC875D97149FCCE10026E120 /* bkgrnd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bkgrnd.png; sourceTree = "<group>"; };
 		FC875DAB14A131790026E120 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		FC875DAD14A1328F0026E120 /* areaplan.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = areaplan.db; sourceTree = "<group>"; };
+		FC875DB114A133430026E120 /* Edge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Edge.h; sourceTree = "<group>"; };
+		FC875DB214A133430026E120 /* Edge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Edge.m; sourceTree = "<group>"; };
+		FC875DB314A133430026E120 /* Graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
+		FC875DB414A133430026E120 /* Graph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Graph.m; sourceTree = "<group>"; };
+		FC875DB514A133430026E120 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FC875DB714A133430026E120 /* Vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
+		FC875DB814A133430026E120 /* Vertex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vertex.m; sourceTree = "<group>"; };
+		FC875DBF14A13E160026E120 /* maplogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maplogo.png; sourceTree = "<group>"; };
+		FC875DC114A146170026E120 /* 10000001_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10000001_1.png; sourceTree = "<group>"; };
+		FC875DC314A146210026E120 /* 10000001.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = 10000001.db; sourceTree = "<group>"; };
+		FC875DC514A1463C0026E120 /* areaplan.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = areaplan.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +123,7 @@
 		FC02C20514985FB500605FD4 = {
 			isa = PBXGroup;
 			children = (
+				FC875DAF14A133430026E120 /* graph */,
 				FC02C269149A401F00605FD4 /* Customized */,
 				FC02C24A1498F4FF00605FD4 /* ViewControllers */,
 				FC02C2491498F4CC00605FD4 /* ViewNibs */,
@@ -153,9 +171,12 @@
 				FC875D97149FCCE10026E120 /* bkgrnd.png */,
 				FC875D95149FB96E0026E120 /* default.png */,
 				FC875D7C149BFF2F0026E120 /* 10000000_1.png */,
-				FC875DAD14A1328F0026E120 /* areaplan.db */,
+				FC875DC114A146170026E120 /* 10000001_1.png */,
+				FC875DC514A1463C0026E120 /* areaplan.db */,
 				FC875D88149C33270026E120 /* 10000000.db */,
+				FC875DC314A146210026E120 /* 10000001.db */,
 				FC875D7D149BFF2F0026E120 /* 10000000_2.png */,
+				FC875DBF14A13E160026E120 /* maplogo.png */,
 				FC875DAB14A131790026E120 /* icon.png */,
 				FC875D8A149C37E50026E120 /* default_POI_2.png */,
 				FC875D6D149A73D60026E120 /* floorplan.jpg */,
@@ -214,6 +235,20 @@
 				FC875D6B149A62100026E120 /* QuartzView.m */,
 			);
 			name = Customized;
+			sourceTree = "<group>";
+		};
+		FC875DAF14A133430026E120 /* graph */ = {
+			isa = PBXGroup;
+			children = (
+				FC875DB114A133430026E120 /* Edge.h */,
+				FC875DB214A133430026E120 /* Edge.m */,
+				FC875DB314A133430026E120 /* Graph.h */,
+				FC875DB414A133430026E120 /* Graph.m */,
+				FC875DB514A133430026E120 /* main.m */,
+				FC875DB714A133430026E120 /* Vertex.h */,
+				FC875DB814A133430026E120 /* Vertex.m */,
+			);
+			path = graph;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,7 +318,10 @@
 				FC875D96149FB96E0026E120 /* default.png in Resources */,
 				FC875D98149FCCE10026E120 /* bkgrnd.png in Resources */,
 				FC875DAC14A131790026E120 /* icon.png in Resources */,
-				FC875DAE14A1328F0026E120 /* areaplan.db in Resources */,
+				FC875DC014A13E180026E120 /* maplogo.png in Resources */,
+				FC875DC214A146180026E120 /* 10000001_1.png in Resources */,
+				FC875DC414A146220026E120 /* 10000001.db in Resources */,
+				FC875DC614A1463D0026E120 /* areaplan.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +341,10 @@
 				FC02C26C149A407400605FD4 /* ZoomScroller.m in Sources */,
 				FC875D6C149A62100026E120 /* QuartzView.m in Sources */,
 				FC875D8F149C3E210026E120 /* SearchViewController.m in Sources */,
+				FC875DBA14A133440026E120 /* Edge.m in Sources */,
+				FC875DBB14A133440026E120 /* Graph.m in Sources */,
+				FC875DBC14A133440026E120 /* main.m in Sources */,
+				FC875DBE14A133440026E120 /* Vertex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

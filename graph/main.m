@@ -1,7 +1,7 @@
 #import "Vertex.h"
 #import "Edge.h"
 #import "Graph.h"
-
+/*
 int main(void) {
    Graph *g = [[Graph alloc] init];
 
@@ -50,3 +50,4 @@ int main(void) {
    [g dealloc];
    return 0;
 }
+ */

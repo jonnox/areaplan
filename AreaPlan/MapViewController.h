@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ParentViewController.h"
 #import "SearchViewController.h"
+#import  "Graph.h"
 
 @class QuartzView;
 @class ZoomScroller;
 
 @interface MapViewController : UIViewController 
-        <ParentViewController,UIActionSheetDelegate,UIScrollViewDelegate>{
+        <ParentViewController,UIActionSheetDelegate,UIScrollViewDelegate, UIAlertViewDelegate>{
             MasterViewController *MVC;
             SearchViewController *searchView;
             IBOutlet QuartzView *overlay;
@@ -23,6 +24,7 @@
             IBOutlet UIImageView *leftButtonImage;
             UIImage *image;
             NSString *cm_name;
+            Graph *graph;
 }
 
 @property (retain,nonatomic) QuartzView *overlay;
@@ -64,5 +66,6 @@
 
 - (IBAction)handleSingleDoubleTap:(UIGestureRecognizer *)sender;
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
-
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+-(int)getVertexIdFromPoiId:(int) poiId;
 @end

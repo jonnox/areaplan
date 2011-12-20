@@ -20,6 +20,10 @@ int const SEL_SETTINGS = 2;
 BOOL hasLoaded = NO;
 BOOL isHighlighted = NO;
 
+int currentID = -1;
+int startID = -1;
+int endID = -1;
+
 float ptstohighlight[8] = {-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0};
 
 @implementation MapViewController
@@ -191,7 +195,6 @@ float ptstohighlight[8] = {-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0};
  * Actions to perform from RIGHT (settings) button press
  */
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSLog(@"Selected option: %d",buttonIndex);
     
     switch (buttonIndex) {
         case SEL_SEARCH:
@@ -219,6 +222,50 @@ float ptstohighlight[8] = {-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0};
         default:
             break;
     }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // Add starting point
+    if(buttonIndex == 1)
+    {
+        startID = [self getVertexIdFromPoiId:currentID];
+        [graph computePathsFromSource:startID];
+    }
+    // Add destination
+    else if(buttonIndex == 2)
+    {
+        endID = [self getVertexIdFromPoiId:currentID];
+    }
+    
+    if(startID > -1 && endID > -1)
+    {
+        NSLog(@"Drawing path from %d to %d", startID, endID);
+        
+        //NSArray *a = [graph getShortestPathToTarget:endID];
+        NSArray *a = [graph dijkstraShortestPathFrom:startID To:endID];
+        NSLog(@"Shortest path: %@", a); 
+    }
+}
+
+-(int)getVertexIdFromPoiId:(int) poiId
+{
+    sqlite3 *dbptr;
+    sqlite3_stmt *sqlstmtptr;
+    int v_id;
+    
+    NSString *stmt = [[NSString alloc] initWithFormat:@"SELECT v_id FROM poi_vertices WHERE poi_id=%d", poiId];
+    if(sqlite3_open([[[NSBundle mainBundle] pathForResource:[[NSString alloc] initWithFormat:@"%d",self.cm_ID] ofType:@"db"] UTF8String], &dbptr) == SQLITE_OK){
+        sqlite3_prepare(dbptr, [stmt UTF8String], -1, &sqlstmtptr, NULL);
+        if(sqlite3_step(sqlstmtptr) == SQLITE_ROW){
+            v_id = sqlite3_column_int(sqlstmtptr, 0);
+        }
+    }else{
+        NSLog(@"Error: %s",sqlite3_errmsg(dbptr));
+    }
+    
+    NSLog(@"%d to %d", poiId, v_id);
+    return v_id;
 }
 
 /**
@@ -273,10 +320,11 @@ float ptstohighlight[8] = {-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0};
     
     if(isIn){
         statement = [[NSString alloc] initWithFormat:@"SELECT name,info,location FROM POI WHERE id=%d",poiid];sqlite3_prepare(dbptr, [statement UTF8String], -1, &sqlstmtptr, NULL);
+        currentID = poiid;
         if(sqlite3_step(sqlstmtptr) == SQLITE_ROW){
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[[NSString alloc] initWithFormat:@"%s",sqlite3_column_text(sqlstmtptr, 0)]
                         message:[[NSString alloc] initWithFormat:@"%s\n\n(%s)",sqlite3_column_text(sqlstmtptr, 1),sqlite3_column_text(sqlstmtptr, 2)]
-                        delegate:nil 
+                        delegate:self 
                         cancelButtonTitle:@"Back to map"
                         otherButtonTitles:@"Mark as starting location", @"Mark as destination", nil];
             [alert show];
@@ -547,6 +595,34 @@ float ptstohighlight[8] = {-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0};
     
     [self.zoomScroller setZoomScale:sqlite3_column_double(sqlstmtptr, 6) animated:YES];
 
+    // Graph setup
+    graph = [[Graph alloc] init];    
+    if(sqlite3_open([[[NSBundle mainBundle] pathForResource:[[NSString alloc] initWithFormat:@"%d",self.cm_ID] ofType:@"db"] UTF8String], &dbptr) == SQLITE_OK){
+        sqlite3_prepare(dbptr, "SELECT * from vertices", -1, &sqlstmtptr, NULL);
+        while(sqlite3_step(sqlstmtptr) == SQLITE_ROW){
+            
+            int v_id = sqlite3_column_int(sqlstmtptr, 0);
+            int x = sqlite3_column_int(sqlstmtptr, 1);
+            int y = sqlite3_column_int(sqlstmtptr, 2);
+            int z = sqlite3_column_int(sqlstmtptr, 3);
+            
+            Vertex *vertex = [[Vertex alloc] initWithID:v_id X:x Y:y Z:z];
+            
+            sqlite3_stmt *edgestmt;
+            NSString *stmt = [[NSString alloc] initWithFormat:@"SELECT target_id, weight FROM edges WHERE v_id=%d", v_id];
+            sqlite3_prepare(dbptr, "", -1, &edgestmt, NULL);
+            while(sqlite3_step(edgestmt) == SQLITE_ROW)
+            {
+                int target = sqlite3_column_int(edgestmt, 0);
+                int weight = sqlite3_column_int(edgestmt, 1);
+                
+                [vertex addEdgeTo:target Weight:weight]; 
+            }
+            [graph.vertices addObject:vertex];
+        }
+    }else{
+        NSLog(@"Error: %s",sqlite3_errmsg(dbptr));
+    }
 }
 
 - (void)viewDidUnload

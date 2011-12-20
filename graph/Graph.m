@@ -67,24 +67,6 @@
    return YES;
 }
 
-/*
-- (NSMutableArray*) getEdgesForVertexID: (int)sourceID
-{
-   int i;
-
-   NSMutableArray *connections = [[NSMutableArray alloc] init];
-
-   for(i = 0; i < [edges count]; i++)
-   {
-      Edge *e = [edges objectAtIndex:i];
-      if([e sourceID] == sourceID)
-      {
-         [connections addObject:e];
-      }
-   }
-   return connections;
-}*/
-
 - (void) computePathsFromSource: (int)sourceID
 {
    int i;
