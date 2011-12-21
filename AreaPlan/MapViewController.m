@@ -201,6 +201,7 @@ float ptstohighlight[8] = {-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0};
             if(searchView == nil){
                 searchView = [[SearchViewController alloc] initWithNibName:@"SearchView" bundle:nil];
                 searchView.parentVC = self;
+                searchView.searchBar.showsCancelButton = YES;
             }
             
             [UIView beginAnimations:nil context:NULL];
@@ -240,11 +241,11 @@ float ptstohighlight[8] = {-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0};
     
     if(startID > -1 && endID > -1)
     {
-        NSLog(@"Drawing path from %d to %d", startID, endID);
+        //NSLog(@"Drawing path from %d to %d", startID, endID);
         
         //NSArray *a = [graph getShortestPathToTarget:endID];
         NSArray *a = [graph dijkstraShortestPathFrom:startID To:endID];
-        NSLog(@"Shortest path: %@", a); 
+        //NSLog(@"Shortest path: %@", a); 
     }
 }
 
@@ -264,7 +265,7 @@ float ptstohighlight[8] = {-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0};
         NSLog(@"Error: %s",sqlite3_errmsg(dbptr));
     }
     
-    NSLog(@"%d to %d", poiId, v_id);
+    //NSLog(@"%d to %d", poiId, v_id);
     return v_id;
 }
 
@@ -326,7 +327,8 @@ float ptstohighlight[8] = {-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0};
                         message:[[NSString alloc] initWithFormat:@"%s\n\n(%s)",sqlite3_column_text(sqlstmtptr, 1),sqlite3_column_text(sqlstmtptr, 2)]
                         delegate:self 
                         cancelButtonTitle:@"Back to map"
-                        otherButtonTitles:@"Mark as starting location", @"Mark as destination", nil];
+                                                  otherButtonTitles: nil];
+                        //otherButtonTitles:@"Mark as starting location", @"Mark as destination", nil];
             [alert show];
             alert = nil;
         }

@@ -86,7 +86,7 @@ float hpts[8] = {-1,-1,-1,-1,-1,-1,-1,-1};
         hh = 12;
         
         if(type >= [images count]){
-            NSLog(@"Out of bounds %d (%d)", type,[images count]);
+            //NSLog(@"Out of bounds %d (%d)", type,[images count]);
             image = [images objectAtIndex:0];
         }else{
             image = [images objectAtIndex:type];

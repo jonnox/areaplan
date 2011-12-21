@@ -31,7 +31,6 @@
 		FC875D75149BDAA40026E120 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FC875D74149BDAA40026E120 /* libsqlite3.0.dylib */; };
 		FC875D7E149BFF2F0026E120 /* 10000000_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D7C149BFF2F0026E120 /* 10000000_1.png */; };
 		FC875D7F149BFF2F0026E120 /* 10000000_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D7D149BFF2F0026E120 /* 10000000_2.png */; };
-		FC875D89149C33270026E120 /* 10000000.db in Resources */ = {isa = PBXBuildFile; fileRef = FC875D88149C33270026E120 /* 10000000.db */; };
 		FC875D8B149C37E50026E120 /* default_POI_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875D8A149C37E50026E120 /* default_POI_2.png */; };
 		FC875D8F149C3E210026E120 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC875D8D149C3E210026E120 /* SearchViewController.m */; };
 		FC875D90149C3E210026E120 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC875D8E149C3E210026E120 /* SearchView.xib */; };
@@ -44,8 +43,9 @@
 		FC875DBE14A133440026E120 /* Vertex.m in Sources */ = {isa = PBXBuildFile; fileRef = FC875DB814A133430026E120 /* Vertex.m */; };
 		FC875DC014A13E180026E120 /* maplogo.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875DBF14A13E160026E120 /* maplogo.png */; };
 		FC875DC214A146180026E120 /* 10000001_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FC875DC114A146170026E120 /* 10000001_1.png */; };
-		FC875DC414A146220026E120 /* 10000001.db in Resources */ = {isa = PBXBuildFile; fileRef = FC875DC314A146210026E120 /* 10000001.db */; };
 		FC875DC614A1463D0026E120 /* areaplan.db in Resources */ = {isa = PBXBuildFile; fileRef = FC875DC514A1463C0026E120 /* areaplan.db */; };
+		FC875DC814A1494B0026E120 /* 10000000.db in Resources */ = {isa = PBXBuildFile; fileRef = FC875DC714A1494B0026E120 /* 10000000.db */; };
+		FC875DCC14A24FCF0026E120 /* 10000001.db in Resources */ = {isa = PBXBuildFile; fileRef = FC875DCB14A24FCF0026E120 /* 10000001.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,7 +83,6 @@
 		FC875D74149BDAA40026E120 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		FC875D7C149BFF2F0026E120 /* 10000000_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10000000_1.png; sourceTree = "<group>"; };
 		FC875D7D149BFF2F0026E120 /* 10000000_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10000000_2.png; sourceTree = "<group>"; };
-		FC875D88149C33270026E120 /* 10000000.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = 10000000.db; sourceTree = "<group>"; };
 		FC875D8A149C37E50026E120 /* default_POI_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_POI_2.png; sourceTree = "<group>"; };
 		FC875D8C149C3E210026E120 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		FC875D8D149C3E210026E120 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
@@ -100,8 +99,9 @@
 		FC875DB814A133430026E120 /* Vertex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vertex.m; sourceTree = "<group>"; };
 		FC875DBF14A13E160026E120 /* maplogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maplogo.png; sourceTree = "<group>"; };
 		FC875DC114A146170026E120 /* 10000001_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10000001_1.png; sourceTree = "<group>"; };
-		FC875DC314A146210026E120 /* 10000001.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = 10000001.db; sourceTree = "<group>"; };
 		FC875DC514A1463C0026E120 /* areaplan.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = areaplan.db; sourceTree = "<group>"; };
+		FC875DC714A1494B0026E120 /* 10000000.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = 10000000.db; sourceTree = "<group>"; };
+		FC875DCB14A24FCF0026E120 /* 10000001.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = 10000001.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,9 +172,9 @@
 				FC875D95149FB96E0026E120 /* default.png */,
 				FC875D7C149BFF2F0026E120 /* 10000000_1.png */,
 				FC875DC114A146170026E120 /* 10000001_1.png */,
+				FC875DCB14A24FCF0026E120 /* 10000001.db */,
 				FC875DC514A1463C0026E120 /* areaplan.db */,
-				FC875D88149C33270026E120 /* 10000000.db */,
-				FC875DC314A146210026E120 /* 10000001.db */,
+				FC875DC714A1494B0026E120 /* 10000000.db */,
 				FC875D7D149BFF2F0026E120 /* 10000000_2.png */,
 				FC875DBF14A13E160026E120 /* maplogo.png */,
 				FC875DAB14A131790026E120 /* icon.png */,
@@ -312,7 +312,6 @@
 				FC875D72149AE7ED0026E120 /* restaurant.png in Resources */,
 				FC875D7E149BFF2F0026E120 /* 10000000_1.png in Resources */,
 				FC875D7F149BFF2F0026E120 /* 10000000_2.png in Resources */,
-				FC875D89149C33270026E120 /* 10000000.db in Resources */,
 				FC875D8B149C37E50026E120 /* default_POI_2.png in Resources */,
 				FC875D90149C3E210026E120 /* SearchView.xib in Resources */,
 				FC875D96149FB96E0026E120 /* default.png in Resources */,
@@ -320,8 +319,9 @@
 				FC875DAC14A131790026E120 /* icon.png in Resources */,
 				FC875DC014A13E180026E120 /* maplogo.png in Resources */,
 				FC875DC214A146180026E120 /* 10000001_1.png in Resources */,
-				FC875DC414A146220026E120 /* 10000001.db in Resources */,
 				FC875DC614A1463D0026E120 /* areaplan.db in Resources */,
+				FC875DC814A1494B0026E120 /* 10000000.db in Resources */,
+				FC875DCC14A24FCF0026E120 /* 10000001.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

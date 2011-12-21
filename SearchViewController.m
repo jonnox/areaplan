@@ -245,9 +245,9 @@
     int i;
     for(i = 0; i < [POI count]; i++)
     {
-        NSLog(@"%@ - %@", [[POI objectAtIndex:i] objectAtIndex:1], [[POI objectAtIndex:i] objectAtIndex:2]);
+        //NSLog(@"%@ - %@", [[POI objectAtIndex:i] objectAtIndex:1], [[POI objectAtIndex:i] objectAtIndex:2]);
     }
-    NSLog(@"-----------------");
+    //NSLog(@"-----------------");
 }
 
 - (void)viewDidLoad

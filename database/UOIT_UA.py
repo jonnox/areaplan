@@ -288,25 +288,27 @@ E = [
 [35,36,37,47]
 ]
 
+
 myid = 0
 for pp in poi:
 	cpx = (pp[5][1][0] + pp[5][0][0]) / 2
 	cpy = (pp[5][2][1] + pp[5][0][1]) / 2
-	curr.execute("""insert into POI values (%d,%d,'%s','%s',%d,'%s',%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d);""" %(myid,pp[1],pp[0],pp[2],pp[3],pp[4],pp[5][0][0],pp[5][0][1],pp[5][1][0],pp[5][1][1],pp[5][2][0],pp[5][2][1],pp[5][3][0],pp[5][3][1],cpx,cpy,pp[6]))
+	curr.execute("insert into POI values (%d,%d,'%s','%s',%d,'%s',%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d);" %(myid,pp[1],pp[0],pp[2],pp[3],pp[4],pp[5][0][0],pp[5][0][1],pp[5][1][0],pp[5][1][1],pp[5][2][0],pp[5][2][1],pp[5][3][0],pp[5][3][1],cpx,cpy,pp[6]))
 	for pvtx in pp[7]:
-		curr.execute("""insert into POI_vertices values (%d,%d);""" %(myid,pvtx))
+		curr.execute("insert into POI_vertices values (%d,%d);" %(myid,pvtx))
 	myid += 1
 	
 myid = 0
 for v in V:
-   curr.execute("""insert into vertices values (%d, %d, %d, %d);""" % (myid, v[0], v[1], v[2]))
+   curr.execute("insert into vertices values (%d, %d, %d, %d);" % (myid, v[0], v[1], v[2]))
    myid += 1
+
 
 myid = 0
 for e in E:
    for target in e:
-      curr.execute("""insert into edges values (%d, %d, %d);""" % (myid, target, 0)) 
-      myid += 1
+      curr.execute("insert into edges values (%d, %d, %d);" % (myid, target, 0)) 
+   myid += 1
 
 curr.execute("""insert into mapinfo values (4,800,422,1,0.4,1.0,0.6);""")
 

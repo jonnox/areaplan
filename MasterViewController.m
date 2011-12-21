@@ -126,12 +126,10 @@ int const SEARCH_VIEW_ID = 2;
  */
 -(void)mapSelector:(int)mapID withName:(NSString *)mapName{
     BOOL changeOK = YES;
-    if(self.mapViewController == nil)
+    if(self.mapViewController == nil || self.mapViewController.cm_ID != mapID)
         self.mapViewController = [[MapViewController alloc] initWithNibName:@"MapView" bundle:nil andWithMasterViewController:self];
-
-    // If it is a different map, load new map
-    if(self.mapViewController.cm_ID != mapID)
-        changeOK = [self.mapViewController loadNewMap:mapID withName:mapName];
+        
+    changeOK = [self.mapViewController loadNewMap:mapID withName:mapName];
     
     if(changeOK)
         [self switchToViewByID:MAP_VIEW_ID];
